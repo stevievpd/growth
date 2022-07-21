@@ -53,6 +53,16 @@ if(!isset($_SESSION['IS_LOGIN'])){
                     <i class="fa fa-fw fa-user"></i>
                     <span>Employees</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="employee-table.php">
+                    <i class="fa fa-fw fa-user"></i>
+                    <span>Inventory</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="employee-table.php">
+                    <i class="fa fa-fw fa-user"></i>
+                    <span>Customers</span></a>
+            </li>
             <?php } ?>
             <li class="nav-item">
                 <a class="nav-link" href="news.php">

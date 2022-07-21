@@ -11,10 +11,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 	 <a href="">Dashboard</a>
   </li>
 </ol>
-<!-- Page Content -->
-<h1>Roge, Ilabas mo yung basura mamaya pag-uwi natin.</h1>
-<hr>
-<p>Palagi nating nakakalimutan yung maderpader</p>
+
 </div>
 
 <?php include('footer.php')?>

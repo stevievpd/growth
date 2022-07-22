@@ -54,7 +54,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
                     <span>Employees</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="employee-table.php">
+                <a class="nav-link" href="inventory.php">
                     <i class="fa fa-fw fa-user"></i>
                     <span>Inventory</span></a>
             </li>

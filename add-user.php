@@ -1,5 +1,5 @@
 <?php 
-require('db/db.php');
+require('db.php');
 if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 	header('location:index.php');
 	die();
@@ -25,12 +25,9 @@ if(isset($_POST['submit'])){
 
 ?>
 
-
-
-
 <?php include('header.php')?>
-  <!-- Font Icon -->
-  <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+<!-- Font Icon -->
+<link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
 <!-- Main css -->
 <link rel="stylesheet" href="css/style.css">
@@ -54,15 +51,18 @@ if(isset($_POST['submit'])){
                                     <div class="form-group">
                                         <label for="username"><i
                                                 class="zmdi zmdi-account material-icons-name"></i></label>
-                                        <input type="text" name="username" id="username" placeholder="Username" autocomplete="off"/>
+                                        <input type="text" name="username" id="username" placeholder="Username"
+                                            autocomplete="off" />
                                     </div>
                                     <div class="form-group">
                                         <label for="password"><i class="zmdi zmdi-lock"></i></label>
-                                        <input type="password" name="password" id="password" placeholder="Password" autocomplete="off"/>
+                                        <input type="password" name="password" id="password" placeholder="Password"
+                                            autocomplete="off" />
                                     </div>
-									<div class="form-group">
+                                    <div class="form-group">
                                         <label for="role"><i class="zmdi zmdi-lock"></i></label>
-                                        <input type="password" name="role" id="role" placeholder="Role" autocomplete="off"/>
+                                        <input type="password" name="role" id="role" placeholder="Role"
+                                            autocomplete="off" />
                                     </div>
                                     <div class="form-group form-button">
                                         <input type="submit" name="submit" id="submit" class="form-submit"
@@ -78,9 +78,9 @@ if(isset($_POST['submit'])){
                     </div>
                 </section>
 
-				   <!-- JS -->
-				   <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/main.js"></script>
+                <!-- JS -->
+                <script src="vendor/jquery/jquery.min.js"></script>
+                <script src="js/main.js"></script>
 
 
             </div>

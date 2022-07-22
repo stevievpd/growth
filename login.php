@@ -1,5 +1,5 @@
 <?php
-require('db.php');
+require('db/db.php');
 $error='';
 session_start();
 if(isset($_POST['submit'])){

@@ -22,7 +22,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     <div class="container-fluid">
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-fw fa-user"></i>
+                <i class="fa fa-archive"></i>
                 Inventory
             </div>
         </div>

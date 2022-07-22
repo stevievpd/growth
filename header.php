@@ -55,7 +55,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="inventory.php">
-                    <i class="fa fa-fw fa-user"></i>
+                    <i class="fa fa-archive"></i>
                     <span>Inventory</span></a>
             </li>
             <li class="nav-item">

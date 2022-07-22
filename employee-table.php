@@ -74,6 +74,14 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
         <button class ="btn btn-primary my-1"><a href="employee-update.php?updateid= '.$employee_id.'" class = "text-light"><i class="fa-solid fa-file-pen"></i></a></button>
 		<button class ="btn btn-danger my-1"><a href="employee-delete.php?deleteid= '.$employee_id.'" class = "text-light"><i class="fa-solid fa-folder-minus"></i></a></button>
         <button class ="btn btn-warning my-1"><a href="employee-view.php?viewid= '.$employee_id.'" class = "text-light"><i class="fa-solid fa-users-viewfinder"></i></a></button>
+
+        <!-- Button trigger modal -->
+		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirm">
+            <i class="fa-solid fa-folder-minus"></i>
+		</button>
+
+		<!-- Modal -->
+
        
       </td>
 	  
@@ -90,6 +98,30 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
         </table>
     </div>
     </div>
+
+    <div class="modal fade" id="deleteConfirm" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="deleteConfirmLabel">Warning!</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+                <p>Are you sure you want to delete '.$first_name.' '.$last_name.'?</p>
+
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <button class="btn btn-danger my-1">
+				    <a href="employee-delete.php?deleteid= '.$employee_id.'">Yes</a>	
+				</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
     <?php include('footer.php')?>
 
 

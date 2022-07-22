@@ -19,6 +19,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/myStyle.css">
 </head>
 
 <body id="page-top">

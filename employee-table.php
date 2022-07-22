@@ -22,8 +22,13 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     <div class="container-fluid">
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-fw fa-user"></i> 
+                <i class="fa fa-fw fa-user"></i>
                 List of Employees
+                <button class="btn float-right">
+                    <a href="employee-add.php">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </a>
+                </button>
             </div>
         </div>
         <table class="table table-hover">
@@ -66,9 +71,38 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 
         
         <td>
-        <button class ="btn btn-primary my-1"><a href="update.php?updateid= '.$employee_id.'" class = "text-light">Update</a></button>
-		<button class ="btn btn-danger my-1"><a href="delete.php?deleteid= '.$employee_id.'" class = "text-light">Delete</a></button>
-        <button class ="btn btn-warning my-1"><a href="viewemployee.php?viewid= '.$employee_id.'" class = "text-light">View</a></button>
+        <button class ="btn btn-primary my-1"><a href="employee-update.php?updateid= '.$employee_id.'" class = "text-light"><i class="fa-solid fa-file-pen"></i></a></button>
+		<button class ="btn btn-danger my-1"><a href="employee-delete.php?deleteid= '.$employee_id.'" class = "text-light"><i class="fa-solid fa-folder-minus"></i></a></button>
+        <button class ="btn btn-warning my-1"><a href="employee-view.php?viewid= '.$employee_id.'" class = "text-light"><i class="fa-solid fa-users-viewfinder"></i></a></button>
+
+        <!-- Button trigger modal -->
+		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirm">
+            <i class="fa-solid fa-folder-minus"></i>
+		</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="deleteConfirm" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="deleteConfirmLabel">Warning!</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+                <p>Are you sure you want to delete '.$first_name.' '.$last_name.'?</p>
+
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <button class="btn btn-danger my-1">
+				    <a href="employee-delete.php?deleteid= '.$employee_id.'">Yes</a>	
+				</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
        
       </td>
 	  

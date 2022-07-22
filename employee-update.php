@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
     $manager_id=$_POST['manager_id'];
     $department_id=$_POST['department_id'];
 
-    $sql="UPDATE employee SET employee_id=$employee_id, first_name='$first_name', last_name='$last_name', email='$email', phone_number='$phone_number', hire_date='$hire_date', 'job_id'='$job_id', 'salary'='$salary', 'manager_id'='$manager_id', 'department_id'='$department_id'  WHERE employee_id=$employee_id";
+    $sql="UPDATE employee SET employee_id=$employee_id, first_name='$first_name', last_name='$last_name', email='$email', phone_number='$phone_number', hire_date='$hire_date', job_id='$job_id', salary='$salary', manager_id='$manager_id', department_id='$department_id' WHERE employee_id=$employee_id";
     $result=mysqli_query($con,$sql);
     if($result){
         header("location: employee-table.php");
@@ -62,6 +62,10 @@ if(isset($_POST['submit'])){
             <div class="form-group">
                 <label>Last name:</label>
                 <input type="text" onkeydown="return /[a-z ' ']/i.test(event.key)" class="form-control" placeholder="Enter last name " name="last_name" autocomplete="off"value = <?php echo $last_name;?>> 
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" class="form-control" placeholder="Enter email" name="email" autocomplete="off" value = <?php echo $email;?>>
             </div>
             <div class="form-group">
                 <label>Phone Number:</label>

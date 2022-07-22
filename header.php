@@ -54,20 +54,33 @@ if(!isset($_SESSION['IS_LOGIN'])){
                     <span>Employees</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="employee-table.php">
-                    <i class="fa fa-fw fa-user"></i>
+                <a class="nav-link" href="inventory.php">
+                    <i class="fa fa-archive"></i>
                     <span>Inventory</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="employee-table.php">
+                <a class="nav-link" href="customer-table.php">
                     <i class="fa fa-fw fa-user"></i>
                     <span>Customers</span></a>
             </li>
-            <?php } ?>
+
             <li class="nav-item">
-                <a class="nav-link" href="news.php">
+                <a class="nav-link" href="payroll.php">
+                    <i class="fa fa-fw fa-newspaper"></i>
+                    <span>Payroll</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="add-user.php">
                     <i class="fa fa-fw fa-newspaper"></i>
                     <span>Add User</span></a>
+            </li>
+            <?php } ?>
+
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fa fa-fw fa-newspaper"></i>
+                    <span>Point of Sale</span></a>
             </li>
         </ul>
         <div id="content-wrapper">

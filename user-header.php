@@ -41,7 +41,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
     <div id="wrapper">
         <!-- Sidebar -->
         <ul class="sidebar navbar-nav">
-            <?php if($_SESSION['ROLE']==1){?>
+            <?php if($_SESSION['ROLE']==2){?>
             <li class="nav-item">
                 <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>

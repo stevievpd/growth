@@ -2,7 +2,7 @@
 
 // Create connection
 include 'db/db.php';
-$sql = "SELECT * FROM employee WHERE first_name OR email OR last_name LIKE '%".$_POST['name']."%'";
+$sql = "SELECT * FROM employee WHERE first_name OR last_name OR email LIKE '%".$_POST['name']."%'";
 $result = mysqli_query($conn, $sql);
 if(mysqli_num_rows($result)>0){
 	while ($row=mysqli_fetch_assoc($result)) {
@@ -13,7 +13,6 @@ if(mysqli_num_rows($result)>0){
 				  <td>". $row['email']."</td>
 				  <td>". $row['phone_number']."</td>
 				  <td>". $row['hire_date']."</td>
-				  <td>".$row['timestamp']."</td>
 		        </tr>";
 	}
 }

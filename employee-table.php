@@ -81,25 +81,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 		</button>
 
 		<!-- Modal -->
-
-       
-      </td>
-	  
-      </tr>';
-    }
-    
-  }
-
-  ?>
-
-
-            </tbody>
-            
-        </table>
-    </div>
-    </div>
-
-    <div class="modal fade" id="deleteConfirm" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmLabel" aria-hidden="true">
+		<div class="modal fade" id="deleteConfirm" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -121,7 +103,22 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 		    </div>
 		  </div>
 		</div>
+       
+      </td>
+	  
+      </tr>';
+    }
+    
+  }
 
+  ?>
+
+
+            </tbody>
+            
+        </table>
+    </div>
+    </div>
     <?php include('footer.php')?>
 
 

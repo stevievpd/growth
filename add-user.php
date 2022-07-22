@@ -12,7 +12,7 @@ if(isset($_POST['submit'])){
     $role=$_POST['role'];
 
     $sql="INSERT INTO admin_user (username, password, role) values  ('$username','$password','$role')";
-    $result=mysqli_query($con,$sql);
+    $result=mysqli_query($conn,$sql);
     if($result){
 
         header("Location:index.php");

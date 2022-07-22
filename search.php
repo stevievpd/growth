@@ -1,6 +1,5 @@
 <?php
 
-// Create connection
 include 'db/db.php';
 $sql = "SELECT * FROM employee WHERE first_name OR last_name OR email LIKE '%".$_POST['name']."%'";
 $result = mysqli_query($conn, $sql);

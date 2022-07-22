@@ -9,6 +9,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 
 
 <body>
+
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -37,7 +38,6 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                                 class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-
         </section>
 
 

@@ -22,8 +22,12 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     <div class="container-fluid">
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-fw fa-user"></i>
-                List of Employees
+                <i class="fa fa-fw fa-user float-left" style="padding-top: 8px;"></i>
+                <p class="float-left" style="padding-top: 2px">List of Employees</p>
+                
+                <form class="form-inline my-2 my-lg-0 float-right">
+                    <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                </form>
                 <button class="btn float-right">
                     <a href="employee-add.php">
                         <i class="fa-solid fa-user-plus"></i>
@@ -121,12 +125,22 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     </div>
     <?php include('footer.php')?>
 
-
-
-
-
-
-
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#search").keypress(function() {
+            $.ajax({
+                type: 'POST',
+                url: 'search.php',
+                data: {
+                    name: $("#search").val(),
+                },
+                success: function(data) {
+                    $("#output").html(data);
+                }
+            });
+        });
+    });
+    </script>
 
 
 </body>

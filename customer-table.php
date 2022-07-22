@@ -1,5 +1,5 @@
 <?php 
-require('db.php');
+require('db/db.php');
 include('header.php');
 if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 	header('location:user-index.php');

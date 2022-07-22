@@ -22,8 +22,9 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     <div class="container-fluid">
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-fw fa-user"></i> 
+                <i class="fa fa-fw fa-user"></i>
                 List of Employees
+                <i class="fa-solid fa-user-plus"></i>
             </div>
         </div>
         <table class="table table-hover">
@@ -66,9 +67,9 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 
         
         <td>
-        <button class ="btn btn-primary my-1"><a href="update.php?updateid= '.$employee_id.'" class = "text-light">Update</a></button>
+        <button class ="btn btn-primary my-1"><a href="employee-update.php?updateid= '.$employee_id.'" class = "text-light">Update</a></button>
 		<button class ="btn btn-danger my-1"><a href="delete.php?deleteid= '.$employee_id.'" class = "text-light">Delete</a></button>
-        <button class ="btn btn-warning my-1"><a href="viewemployee.php?viewid= '.$employee_id.'" class = "text-light">View</a></button>
+        <button class ="btn btn-warning my-1"><a href="employee-view.php?viewid= '.$employee_id.'" class = "text-light">View</a></button>
        
       </td>
 	  

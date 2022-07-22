@@ -15,7 +15,7 @@ if(isset($_POST['submit'])){
     $result=mysqli_query($con,$sql);
     if($result){
 
-        header("Location: user-index.php");
+        header("Location:index.php");
     }
     else{
     }

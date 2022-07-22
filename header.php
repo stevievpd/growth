@@ -63,11 +63,24 @@ if(!isset($_SESSION['IS_LOGIN'])){
                     <i class="fa fa-fw fa-user"></i>
                     <span>Customers</span></a>
             </li>
-            <?php } ?>
+
             <li class="nav-item">
-                <a class="nav-link" href="news.php">
+                <a class="nav-link" href="payroll.php">
+                    <i class="fa fa-fw fa-newspaper"></i>
+                    <span>Payroll</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="add-user.php">
                     <i class="fa fa-fw fa-newspaper"></i>
                     <span>Add User</span></a>
+            </li>
+            <?php } ?>
+
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fa fa-fw fa-newspaper"></i>
+                    <span>Point of Sale</span></a>
             </li>
         </ul>
         <div id="content-wrapper">

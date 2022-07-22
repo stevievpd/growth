@@ -1,6 +1,7 @@
 <?php
 
-include 'connect.php';
+include 'db/db.php';
+include 'header.php';
 if(isset($_POST['submit'])){
 
     $first_name=$_POST['first_name'];
@@ -15,7 +16,7 @@ if(isset($_POST['submit'])){
     $result=mysqli_query($con,$sql);
     if($result){
 
-        header("Location: display.php");
+        header("Location: employee-table.php");
     }
     else{
     }
@@ -37,6 +38,19 @@ if(isset($_POST['submit'])){
 </head>
 
 <body>
+    <div class="container-fluid">
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-fw fa-user"></i>
+                List of Employees
+                <button class="btn float-right">
+                    <a href="employee-add.php">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
     <div class="container my-10">
         <form method="post">
             <div class="form-group">
@@ -50,13 +64,13 @@ if(isset($_POST['submit'])){
                     placeholder="Enter last name " name="last_name" autocomplete="off" required>
             </div>
             <div class="form-group">
-                <label>email:</label>
+                <label>Email:</label>
                 <input type="email" class="form-control"
                     placeholder="Enter email" name="email" autocomplete="off" required>
             </div>
             <div class="form-group">
                 <label>Phone number:</label>
-                <input type="text" class="form-control" placeholder="Enter phone number " name="phone_number"
+                <input type="number" minlength="11" maxlength="15" class="form-control" placeholder="Enter phone number " name="phone_number"
                     autocomplete="off" required>
             </div>
             <div class="form-group">

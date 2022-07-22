@@ -24,7 +24,11 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
             <div class="card-header">
                 <i class="fa fa-fw fa-user"></i>
                 List of Employees
-                <i class="fa-solid fa-user-plus"></i>
+                <button class="btn float-right">
+                    <a href="employee-add.php">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </a>
+                </button>
             </div>
         </div>
         <table class="table table-hover">
@@ -67,9 +71,9 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 
         
         <td>
-        <button class ="btn btn-primary my-1"><a href="employee-update.php?updateid= '.$employee_id.'" class = "text-light">Update</a></button>
-		<button class ="btn btn-danger my-1"><a href="delete.php?deleteid= '.$employee_id.'" class = "text-light">Delete</a></button>
-        <button class ="btn btn-warning my-1"><a href="employee-view.php?viewid= '.$employee_id.'" class = "text-light">View</a></button>
+        <button class ="btn btn-primary my-1"><a href="employee-update.php?updateid= '.$employee_id.'" class = "text-light"><i class="fa-solid fa-file-pen"></i></a></button>
+		<button class ="btn btn-danger my-1"><a href="employee-delete.php?deleteid= '.$employee_id.'" class = "text-light"><i class="fa-solid fa-folder-minus"></i></a></button>
+        <button class ="btn btn-warning my-1"><a href="employee-view.php?viewid= '.$employee_id.'" class = "text-light"><i class="fa-solid fa-users-viewfinder"></i></a></button>
        
       </td>
 	  

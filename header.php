@@ -70,7 +70,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="payroll.php">
+                <a class="nav-link" href="attendance.php">
                     <i class="fa fa-fw fa-newspaper"></i>
                     <span>Payroll</span></a>
             </li>

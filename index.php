@@ -1,46 +1,98 @@
 <?php 
 include('header.php');
+require('db/db.php');
 if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 	header('location:news.php');
 	die();
 }
 ?>
-<div class="container-fluid">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="">Dashboard</a>
-        </li>
-    </ol>
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
-    </button>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+<body>
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Dashboard
+            </h1>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <?php
+                                $sql = "SELECT * FROM employee";
+                                $query = $con->query($sql);
+                                echo "<h3>".$query->num_rows."</h3>";
+                                ?>
+                            <p>Total Employees</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-stalker"></i>
+                        </div>
+                        <a href="employee-table.php" class="small-box-    footer">More info <i
+                                class="fa fa-arrow-circle-right"></i></a>
+                    </div>
                 </div>
-                <div class="modal-body">
 
+        </section>
+
+
+        <section class="content">
+            <div class="row">
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <?php
+                                $sql = "SELECT * FROM inventory";
+                                $query = $con->query($sql);
+                                echo "<h3>".$query->num_rows."</h3>";
+                                ?>
+                            <p>Total Stocks</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-stalker"></i>
+                        </div>
+                        <a href="inventory.php" class="small-box-    footer">More info <i
+                                class="fa fa-arrow-circle-right"></i></a>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">
-                        <a href="add-user.php">Save changes</a>
-                    </button>
+
+        </section>
+        
+
+        <section class="content">
+            <div class="row">
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <?php
+                                $sql = "SELECT * FROM customer";
+                                $query = $con->query($sql);
+                                echo "<h3>".$query->num_rows."</h3>";
+                                ?>
+                            <p>Total Customers</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-stalker"></i>
+                        </div>
+                        <a href="customer-table.php" class="small-box-    footer">More info <i
+                                class="fa fa-arrow-circle-right"></i></a>
+                    </div>
                 </div>
-            </div>
-        </div>
+
+        </section>
+
+
     </div>
 
-</div>
+</body>
+
+
 
 <?php include('footer.php')?>

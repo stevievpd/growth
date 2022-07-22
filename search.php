@@ -13,7 +13,6 @@ if(mysqli_num_rows($result)>0){
 				  <td>". $row['email']."</td>
 				  <td>". $row['phone_number']."</td>
 				  <td>". $row['hire_date']."</td>
-				  <td>".$row['timestamp']."</td>
 		        </tr>";
 	}
 }

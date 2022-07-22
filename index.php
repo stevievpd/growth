@@ -9,6 +9,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 
 
 <body>
+
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -25,7 +26,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                         <div class="inner">
                             <?php
                                 $sql = "SELECT * FROM employee";
-                                $query = $con->query($sql);
+                                $query = $conn->query($sql);
                                 echo "<h3>".$query->num_rows."</h3>";
                                 ?>
                             <p>Total Employees</p>
@@ -37,7 +38,6 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                                 class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-
         </section>
 
 
@@ -49,7 +49,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                         <div class="inner">
                             <?php
                                 $sql = "SELECT * FROM inventory";
-                                $query = $con->query($sql);
+                                $query = $conn->query($sql);
                                 echo "<h3>".$query->num_rows."</h3>";
                                 ?>
                             <p>Total Stocks</p>
@@ -73,7 +73,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                         <div class="inner">
                             <?php
                                 $sql = "SELECT * FROM customer";
-                                $query = $con->query($sql);
+                                $query = $conn->query($sql);
                                 echo "<h3>".$query->num_rows."</h3>";
                                 ?>
                             <p>Total Customers</p>

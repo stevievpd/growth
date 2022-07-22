@@ -9,16 +9,13 @@ $prodCode=$row['prodCode'];
 $prodDesc=$row['prodDesc'];
 $unit=$row['unit'];
 $quantity=$row['quantity'];
-$stamp=$row['stamp'];
-
+ 
 if(isset($_POST['submit'])){
     $prodCode=$_POST['prodCode'];
     $prodDesc=$_POST['prodDesc'];
     $unit=$_POST['unit'];
-    $quantity=$_POST['quantity'];
-    $stamp=$_POST['stamp'];
-
-    $sql="UPDATE inventory SET prodCode=$prodCode, prodDesc='$prodDesc', unit='$unit', quantity='$quantity', stamp='$stamp";
+    $quantity=$_POST['quantity'];;
+    $sql="UPDATE inventory SET prodCode=$prodCode, prodDesc='$prodDesc', unit='$unit', quantity='$quantity'WHERE prodCode=$prodCode";
     $result=mysqli_query($con,$sql);
     if($result){
         header("location: inventory.php");
@@ -62,10 +59,10 @@ if(isset($_POST['submit'])){
                 <input type="number" class="form-control" placeholder="Enter quantity " name="quantity" autocomplete="off" value = <?php echo $quantity;?>>
             </div>
             <button type="submit" class="btn btn-primary" name = "submit" >Submit</button>
-            <button class ="btn btn-danger"><a href="display.php"class = "text-light">Cancel</a></button>
+            <button class ="btn btn-danger"><a href="inventory.php"class = "text-light">Cancel</a></button>
             
         </form>
-
+         
     </div>
 
 

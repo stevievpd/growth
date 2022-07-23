@@ -1,6 +1,5 @@
 <?php
-	include 'db/db.php';
-    include 'header.php';
+	include 'includes/session.php';
 
 	if(isset($_POST['add'])){
 		$employee = $_POST['employee'];

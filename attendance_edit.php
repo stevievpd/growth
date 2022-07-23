@@ -1,6 +1,6 @@
 <?php
-		include 'db/db.php';
-		include 'header.php';
+	include 'includes/session.php';
+
 
 	if(isset($_POST['edit'])){
 		$id = $_POST['id'];

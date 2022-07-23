@@ -3,43 +3,44 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+            <h4 class="modal-title"><b>Add Attendance</b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b>Add Attendance</b></h4>
+                
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="attendance_add.php">
                     <div class="form-group">
-                        <label for="employee" class="col-sm-3 control-label">Employee ID</label>
+                        <label for="employee" class="col-m-3 control-label">Employee ID</label>
 
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="employee" name="employee" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="datepicker_add" class="col-sm-3 control-label">Date</label>
+                        <label for="datepicker_add" class="col-m-3 control-label">Date</label>
 
                         <div class="col-sm-9">
                             <div class="date">
-                                <input type="text" class="form-control" id="datepicker_add" name="date" required>
+                                <input type="date" class="form-control" id="datepicker_add" name="date" required>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="time_in" class="col-sm-3 control-label">Time In</label>
+                        <label for="time_in" class="col-m-3 control-label">Time In</label>
 
                         <div class="col-sm-9">
                             <div class="bootstrap-timepicker">
-                                <input type="text" class="form-control timepicker" id="time_in" name="time_in">
+                                <input type="time" class="form-control timepicker" id="time_in" name="time_in">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="time_out" class="col-sm-3 control-label">Time Out</label>
+                        <label for="time_out" class="col-m-3 control-label">Time Out</label>
 
                         <div class="col-sm-9">
                             <div class="bootstrap-timepicker">
-                                <input type="text" class="form-control timepicker" id="time_out" name="time_out">
+                                <input type="time" class="form-control timepicker" id="time_out" name="time_out">
                             </div>
                         </div>
                     </div>
@@ -55,14 +56,17 @@
     </div>
 </div>
 
+
+
 <!-- Edit -->
 <div class="modal fade" id="edit">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+            <h4 class="modal-title"><b><span id="employee_name"></span></b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b><span id="employee_name"></span></b></h4>
+                
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="attendance_edit.php">
@@ -72,7 +76,7 @@
 
                         <div class="col-sm-9">
                             <div class="date">
-                                <input type="text" class="form-control" id="datepicker_edit" name="edit_date">
+                                <input type="date" class="form-control" id="datepicker_edit" name="edit_date">
                             </div>
                         </div>
                     </div>
@@ -81,7 +85,7 @@
 
                         <div class="col-sm-9">
                             <div class="bootstrap-timepicker">
-                                <input type="text" class="form-control timepicker" id="edit_time_in"
+                                <input type="time" class="form-control timepicker" id="edit_time_in"
                                     name="edit_time_in">
                             </div>
                         </div>
@@ -91,7 +95,7 @@
 
                         <div class="col-sm-9">
                             <div class="bootstrap-timepicker">
-                                <input type="text" class="form-control timepicker" id="edit_time_out"
+                                <input type="time" class="form-control timepicker" id="edit_time_out"
                                     name="edit_time_out">
                             </div>
                         </div>
@@ -113,9 +117,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+            <h4 class="modal-title"><b><span id="attendance_date"></span></b></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b><span id="attendance_date"></span></b></h4>
+               
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="attendance_delete.php">

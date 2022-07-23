@@ -76,11 +76,13 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                 </section>
         </div>
 
-    </  
-  <?php include 'footer.php'; ?>
-  <?php include 'attendance_modal.php'; ?>
+
+  
+
 </div>
-<?php include 'js/scripts.php'; ?>
+<?php include 'footer.php'; ?>
+  <?php include 'attendance_modal.php'; ?>
+  <?php include 'js/scripts.php'; ?>
 <script>
 $(function(){
   $('.edit').click(function(e){

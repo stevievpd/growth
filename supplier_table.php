@@ -43,54 +43,52 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                     <th scope="col">Phone</th>
                     <th scope="col">Email</th>
                     <th scope="col">Stamp</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
-            <tbody id="output">
-                
-            </tbody>
+            <tbody>
+
+<?php
+
+        $sql = "SELECT * from supplier";
+        $result=mysqli_query($conn, $sql);
+        if($result){
+        while($row=mysqli_fetch_assoc($result))
+        {
+            $supplier_id=$row['supplier_id'];
+            $supplier_name=$row['supplier_name'];
+            $address=$row['address'];
+            $phone=$row['phone'];
+            $email=$row['email'];
+            $stamp=$row['stamp'];
+
+
+
+            echo ' <tr>
+            <th scope="row">'.$supplier_name.'</th>
+            <td>'.$address.'</td>
+            <td>'.$phone.'</td> 
+            <td>'.$email.'</td>
+            <td>'.$stamp.'</td> 
+            <td>
+            <button class ="btn btn-primary my-1"><a href="supplier_update.php?updateid= '.$supplier_id.'" class = "text-light">Update</a></button>
+            <button class ="btn btn-danger my-1"><a href="supplier_delete.php?deleteid= '.$supplier_id.'" class = "text-light">Delete</a></button>
+            <button class ="btn btn-warning my-1"><a href="supplier_table.php?viewid= '.$supplier_id.'" class = "text-light">View</a></button>        
+            </td>
+            <tr>';
+            }
             
-            
-        </table>
-    </div>
-    </div>
+        }
 
-    
-   <?php include('footer.php')?>
-   
-   <script type="text/javascript">
-    $(document).ready(function() {
-        $("#search").keyup(function() {
-            $.ajax({
-                type: 'POST',
-                url: 'supplier-search.php',
-                data: {
-                    name: $("#search").val(),
-                },
-                success: function(data) {
-                    $("#output").html(data);
-                }
-            });
-        });
-    });
-    </script>
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $.ajax({
-                    type: 'POST',
-                    url: 'supplier-search.php',
-                    data: {
-                        name: $("#search").val(),
-                    },
-                    success: function(data) {
-                        $("#output").html(data);
-                    }
-                });
-            });
-            </script>
+        ?>
 
 
+</tbody>
+
+</table>
+</div>
+</div>
+<?php include('footer.php')?>
 
 </body>
-
 </html>

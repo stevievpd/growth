@@ -22,7 +22,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
     <link rel="stylesheet" href="css/myStyle.css">
     
     <script src="vendor/bootstrap/js/bootstrap.js"></script>
-    <script src="vendor/jquery/jquery.js"></script>
+
 
 </head>
 

@@ -71,6 +71,23 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
         });
     </script>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#search').keyup(function(){
+                $.ajax({
+                    type: 'POST',
+                    url: 'search.php',
+                    data: {
+                        name: $("#search").val(),
+                    },
+                    success: function(data) {
+                        $("#output").html(data);
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 
 </html>

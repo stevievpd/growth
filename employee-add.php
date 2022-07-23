@@ -70,7 +70,7 @@ if(isset($_POST['submit'])){
             </div>
             <div class="form-group">
                 <label>Phone number:</label>
-                <input type="text" pattern="\d*" maxlength="4" class="form-control" placeholder="Enter phone number " name="phone_number"
+                <input type="tel" onkeydown="return /[0-9 ' ']/i.test(event.key)" maxlength="11" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}" class="form-control" placeholder="0-(912)-345-6789" name="phone_number"
                     autocomplete="off" required>
             </div>
             <div class="form-group">

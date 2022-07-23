@@ -79,7 +79,6 @@ if(!isset($_SESSION['IS_LOGIN'])){
                     <i class="fa fa-fw fa-newspaper"></i>
                     <span>Add User</span></a>
             </li>
-<<<<<<< HEAD
 
             <li class="nav-item">
                 <a class="nav-link" href="purchase_order.php">

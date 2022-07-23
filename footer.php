@@ -2,7 +2,7 @@
             <footer class="sticky-footer">
                <div class="container my-auto">
                   <div class="copyright text-center my-auto">
-                     <span>Copyright © Your Website 2019</span>
+                     <span>Copyright © VPD Business Solutions Inc</span>
                   </div>
                </div>
             </footer>
@@ -22,3 +22,4 @@
       <script src="js/sb-admin.min.js"></script>
    </body>
 </html>
+

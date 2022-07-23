@@ -1,3 +1,3 @@
 <?php
-$con=mysqli_connect('localhost','root','','growth');
+$conn=mysqli_connect('localhost','root','','growth');
 ?>

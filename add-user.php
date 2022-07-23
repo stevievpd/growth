@@ -1,5 +1,5 @@
 <?php 
-require('db.php');
+require('db/db.php');
 if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 	header('location:index.php');
 	die();
@@ -12,7 +12,7 @@ if(isset($_POST['submit'])){
     $role=$_POST['role'];
 
     $sql="INSERT INTO admin_user (username, password, role) values  ('$username','$password','$role')";
-    $result=mysqli_query($con,$sql);
+    $result=mysqli_query($conn,$sql);
     if($result){
 
         header("Location:index.php");

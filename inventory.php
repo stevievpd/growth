@@ -21,9 +21,21 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 
     <div class="container-fluid">
         <div class="card mb-3">
-            <div class="card-header">
-                <i class="fa fa-archive"></i>
-                Inventory
+            <div class="card-body">
+                <div style="display: inline; width: 50%;">
+                    <i class="fa fa-archive"></i>
+                    Inventory
+                </div>
+
+                <form class="form-inline my-2 my-lg-0 float-right">
+                    <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search"
+                        aria-label="Search">
+                </form>
+                <button class="btn float-right">
+                    <a href="inventory-add.php">
+                        <i class="fa-solid fa-square-plus fa-lg"></i>
+                    </a>
+                </button>
             </div>
         </div>
         <table class="table table-hover">
@@ -33,13 +45,11 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                     <th scope="col">Description</th>
                     <th scope="col">Unit</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col">Action</th>
-
                 </tr>
             </thead>
             <tbody>
 
-                    <?php
+                <?php
 
                             $sql = "SELECT * from inventory";
                             $result=mysqli_query($conn, $sql);
@@ -57,10 +67,6 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                                 <td>'.$unit.'</td>
                                 <td>'.$quantity.'</td> 
                                 <td>
-                                <button class ="btn btn-primary my-1"><a href="inventory_update.php?updateid= '.$prodCode.'" class = "text-light">Update</a></button>
-                                <button class ="btn btn-danger my-1"><a href="inventory_delete.php?deleteid= '.$prodCode.'" class = "text-light">Delete</a></button>
-                                <button class ="btn btn-warning my-1"><a href="inventory_add.php?viewid= '.$prodCode.'" class = "text-light">Add</a></button>        
-                                </td>
                                 <tr>';
                                 }
                                 
@@ -76,5 +82,38 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     </div>
     <?php include('footer.php')?>
 
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $.ajax({
+            type: 'POST',
+            url: 'queries/employee-search.php',
+            data: {
+                name: $("#search").val(),
+            },
+            success: function(data) {
+                $("#output").html(data);
+            }
+        });
+    });
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#search').keyup(function() {
+            $.ajax({
+                type: 'POST',
+                url: 'queries/employee-search.php',
+                data: {
+                    name: $("#search").val(),
+                },
+                success: function(data) {
+                    $("#output").html(data);
+                }
+            });
+        });
+    });
+    </script>
+
 </body>
+
 </html>

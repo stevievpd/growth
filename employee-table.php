@@ -15,6 +15,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 
 <body>
@@ -55,10 +56,8 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     </div>
     <?php include('footer.php')?>
 
-
     <script type="text/javascript">
-    $(document).ready(function() {
-        $("#search").keyup(function() {
+        $(document).ready(function() {
             $.ajax({
                 type: 'POST',
                 url: 'search.php',
@@ -70,24 +69,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                 }
             });
         });
-    });
     </script>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $.ajax({
-            type: 'POST',
-            url: 'search.php',
-            data: {
-                name: $("#search").val(),
-            },
-            success: function(data) {
-                $("#output").html(data);
-            }
-        });
-    });
-    </script>
-
 
 </body>
 

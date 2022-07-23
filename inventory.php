@@ -57,7 +57,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                                 <td>'.$unit.'</td>
                                 <td>'.$quantity.'</td> 
                                 <td>
-                                <button class ="btn btn-primary my-1"><a href="invupdate.php?updateid= '.$prodCode.'" class = "text-light">Update</a></button>
+                                <button class ="btn btn-primary my-1"><a href="inventory_update.php?updateid= '.$prodCode.'" class = "text-light">Update</a></button>
                                 <button class ="btn btn-danger my-1"><a href="invdelete.php?deleteid= '.$prodCode.'" class = "text-light">Delete</a></button>
                                 <button class ="btn btn-warning my-1"><a href="viewinv.php?viewid= '.$prodCode.'" class = "text-light">View</a></button>        
                                 </td>

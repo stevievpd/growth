@@ -1,7 +1,7 @@
 <?php 
 require('db/db.php');
 include('header.php');
-include ('attendance-modal.php'); 
+include ('attendance_modal.php'); 
 if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 	header('location:user-index.php');
 	die();
@@ -76,8 +76,46 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                 </section>
         </div>
 
-    </div>
-</body>
+    </  
+  <?php include 'footer.php'; ?>
+  <?php include 'attendance_modal.php'; ?>
+</div>
+<?php include 'js/scripts.php'; ?>
+<script>
+$(function(){
+  $('.edit').click(function(e){
+    e.preventDefault();
+    $('#edit').modal('show');
+    var id = $(this).data('id');
+    getRow(id);
+  });
 
+  $('.delete').click(function(e){
+    e.preventDefault();
+    $('#delete').modal('show');
+    var id = $(this).data('id');
+    getRow(id);
+  });
+});
+
+function getRow(id){
+  $.ajax({
+    type: 'POST',
+    url: 'attendance_row.php',
+    data: {id:id},
+    dataType: 'json',
+    success: function(response){
+      $('#datepicker_edit').val(response.date);
+      $('#attendance_date').html(response.date);
+      $('#edit_time_in').val(response.time_in);
+      $('#edit_time_out').val(response.time_out);
+      $('#attid').val(response.attid);
+      $('#employee_name').html(response.firstname+' '+response.lastname);
+      $('#del_attid').val(response.attid);
+      $('#del_employee_name').html(response.firstname+' '+response.lastname);
+    }
+  });
+}
+</script>
+</body>
 </html>
-<?php include('footer.php')?>

@@ -70,7 +70,7 @@ if(isset($_POST['submit'])){
             </div>
             <div class="form-group">
                 <label>Phone number:</label>
-                <input type="number" minlength="11" maxlength="15" class="form-control" placeholder="Enter phone number " name="phone_number"
+                <input type="text" pattern="\d*" maxlength="4" class="form-control" placeholder="Enter phone number " name="phone_number"
                     autocomplete="off" required>
             </div>
             <div class="form-group">
@@ -84,7 +84,7 @@ if(isset($_POST['submit'])){
                     autocomplete="off" required>
             </div>
             <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-            <button class="btn btn-danger"><a href="display.php" class="text-light">Cancel</a></button>
+            <button class="btn btn-danger"><a href="employee-table.php" class="text-light">Cancel</a></button>
         </form>
 
     </div>

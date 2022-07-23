@@ -25,9 +25,10 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
             <div class="card-header">
                 <i class="fa fa-fw fa-user float-left" style="padding-top: 8px;"></i>
                 <p class="float-left" style="padding-top: 2px">List of Employees</p>
-                
+
                 <form class="form-inline my-2 my-lg-0 float-right">
-                    <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search"
+                        aria-label="Search">
                 </form>
                 <button class="btn float-right">
                     <a href="employee-add.php">
@@ -48,19 +49,35 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                 </tr>
             </thead>
             <tbody id="output">
-                
+
             </tbody>
-            
+
         </table>
     </div>
     </div>
     <?php include('footer.php')?>
 
     <script type="text/javascript">
-        $(document).ready(function() {
+    $(document).ready(function() {
+        $.ajax({
+            type: 'POST',
+            url: 'queries/employee-search.php',
+            data: {
+                name: $("#search").val(),
+            },
+            success: function(data) {
+                $("#output").html(data);
+            }
+        });
+    });
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#search').keyup(function() {
             $.ajax({
                 type: 'POST',
-                url: 'search.php',
+                url: 'queries/employee-search.php',
                 data: {
                     name: $("#search").val(),
                 },
@@ -69,23 +86,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                 }
             });
         });
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#search').keyup(function(){
-                $.ajax({
-                    type: 'POST',
-                    url: 'search.php',
-                    data: {
-                        name: $("#search").val(),
-                    },
-                    success: function(data) {
-                        $("#output").html(data);
-                    }
-                });
-            });
-        });
+    });
     </script>
 
 </body>

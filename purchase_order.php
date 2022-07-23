@@ -1,3 +1,14 @@
+<?php 
+require('db/db.php');
+include('header.php');
+if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
+	header('location:news.php');
+	die();
+}
+?>
+
+</select>
+
 <!doctype html>
 <html lang="en">
 
@@ -14,15 +25,31 @@
 <body>
         <div class="purchase_wrapper">
             <div class="purchase_order">
-               <h2> Purchase Order </h2>
             </div>
         </div>
     <div class="container my-10">
         <form method="post">
         <div class="form-group">
-                <label>Supplier</label>
-                <input type="text" class="form-control"
-                    placeholder="Enter Supplier" name="supplier" autocomplete="off" required>
+            <div class="clear"></div>
+            <?php
+    $mysqli =NEW MySQLi('localhost','root','','growth');
+    $resultSet = $mysqli ->query("SELECT supplier_name FROM supplier");
+    $color1 = "#8D8F8C";
+    $color2 = "#858784";
+    $color = $color1;
+
+?>  
+    <select name="supplier">
+    <?php
+    while ($rows = $resultSet ->fetch_assoc())
+    {
+        $color == $color1 ? $color = $color2 : $color = $color1;
+        $supplier_name = $rows ['supplier_name'];
+        echo "<option value = '$supplier_name' style='background:$color;'>$supplier_name</option>";
+    }
+    ?>
+                <label class="first-column">Select a supplier: </label><div class="second-column">
+                    <select>
             </div>
             <div class="form-group">
                 <label>Purchase Date</label>

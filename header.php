@@ -20,13 +20,15 @@ if(!isset($_SESSION['IS_LOGIN'])){
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" href="css/myStyle.css">
-    <link rel="stylesheet" href="vendor/bootstrap.js">
+    
+    <script src="vendor/bootstrap/js/bootstrap.js"></script>
+
 
 </head>
 
 <body id="page-top">
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-        <a class="navbar-brand mr-1" href="index.php">Start Bootstrap</a>
+        <a class="navbar-brand mr-1" href="index.php">Growth System</a>
         <div class="d-none d-md-inline-block ml-auto"></div>
         <!-- Navbar -->
         <div class="navbar-nav ml-auto ml-md-0">
@@ -77,6 +79,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
                     <i class="fa fa-fw fa-newspaper"></i>
                     <span>Add User</span></a>
             </li>
+<<<<<<< HEAD
 
             <li class="nav-item">
                 <a class="nav-link" href="purchase_order.php">
@@ -84,6 +87,13 @@ if(!isset($_SESSION['IS_LOGIN'])){
                     <span>Puchase Order</span></a>
             </li>
 
+=======
+            <li class="nav-item">
+                <a class="nav-link" href="attendance.php">
+                    <i class="fa fa-fw fa-newspaper"></i>
+                    <span>Attendance</span></a>
+            </li>
+>>>>>>> e58e06fea251bcf88023c0ea39b243e420818959
             <?php } ?>
 
             <li class="nav-item">

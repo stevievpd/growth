@@ -1,6 +1,7 @@
 <?php 
 require('db/db.php');
 include('header.php');
+include ('attendance-modal.php'); 
 if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 	header('location:user-index.php');
 	die();
@@ -19,40 +20,60 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 
 <body>
     <div class="wrapper">
-        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1>
-                    Attendance
-                </h1>
+                <h1>Attendance</h1>
             </section>
             <!-- Main content -->
             <section class="content">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="box">
-                            <div class="box-header with-border">
-                                <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i
-                                        class="fa fa-plus"></i> New</a>
-                            </div>
-                            <div class="box-body">
-                                <table id="example1" class="table table-bordered">
-                                    <thead>
-                                        <th class="hidden"></th>
-                                        <th>Date</th>
-                                        <th>Employee ID</th>
-                                        <th>Name</th>
-                                        <th>Time In</th>
-                                        <th>Time Out</th>
-                                        <th>Tools</th>
-                                    </thead>
-                                </table>
-                            </div>
+                <div>
+
+                    <div class="box-header with-border">
+                        <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i
+                                class="fa fa-plus"></i> New</a>
+                        
+                    </div>
+
+                    <div class="align-self-center">
+                        <div class="box-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    
+                                    <th>Date</th>
+                                    <th>Employee ID</th>
+                                    <th>Name</th>
+                                    <th>Time In</th>
+                                    <th>Time Out</th>
+                                    <th>Tools</th>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                            $sql = "SELECT *, employees.employee_id AS empid, attendance.id AS attid FROM attendance LEFT JOIN employees ON employees.id=attendance.employee_id ORDER BY attendance.date DESC, attendance.time_in DESC";
+                                            $query = $conn->query($sql);
+                                            while($row = $query->fetch_assoc()){
+                                            $status = ($row['status'])?'<span class="label label-warning pull-right">ontime</span>':'<span class="label label-danger pull-right">late</span>';
+                                            echo "
+                                                <tr>
+                                                
+                                                <td>".date('M d, Y', strtotime($row['date']))."</td>
+                                                <td>".$row['empid']."</td>
+                                                <td>".$row['firstname'].' '.$row['lastname']."</td>
+                                                <td>".date('h:i A', strtotime($row['time_in']))."</td>
+                                                <td>".date('h:i A', strtotime($row['time_out']))."</td>
+                                                <td>
+                                                    <button class='btn btn-success btn-sm btn-flat edit' data-id='".$row['attid']."'><i class='fa fa-edit'></i> Edit</button>
+                                                    <button class='btn btn-danger btn-sm btn-flat delete' data-id='".$row['attid']."'><i class='fa fa-trash'></i> Delete</button>
+                                                </td>
+                                                </tr>
+                                            ";
+                                            }
+                                        ?>
+                                </tbody>
+                            </table>
+
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
         </div>
 
     </div>

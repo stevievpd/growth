@@ -28,7 +28,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
 <body id="page-top">
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-        <a class="navbar-brand mr-1" href="index.php">Start Bootstrap</a>
+        <a class="navbar-brand mr-1" href="index.php">Growth System</a>
         <div class="d-none d-md-inline-block ml-auto"></div>
         <!-- Navbar -->
         <div class="navbar-nav ml-auto ml-md-0">

@@ -9,58 +9,54 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <section class="content">
-    <div class="container-fluid">
-        <div class="card mb-3">
-            <div class="card-header">
-                <i class="fa fa-fw fa-user"></i>
-                Attendance
-                <button class="btn float-right">
-                    <a href="employee-add.php">
-                        <i class="fa-solid fa-user-plus"></i>
-                    </a>
-                </button>
-            </div>
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Attendance
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i
+                                        class="fa fa-plus"></i> New</a>
+                            </div>
+                            <div class="box-body">
+                                <table id="example1" class="table table-bordered">
+                                    <thead>
+                                        <th class="hidden"></th>
+                                        <th>Date</th>
+                                        <th>Employee ID</th>
+                                        <th>Name</th>
+                                        <th>Time In</th>
+                                        <th>Time Out</th>
+                                        <th>Tools</th>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Employee ID</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Time In</th>
-                    <th scope="col">Time Out</th>
-                    <th scope="col">Tools</th>
 
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-            
-        </table>
-</section>
     </div>
-    </div>
-    <?php include('footer.php')?>
-
-
-
-
-
-
-
-
-
 </body>
+
 </html>
 <?php include('footer.php')?>
-

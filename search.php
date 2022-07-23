@@ -14,18 +14,19 @@ if(mysqli_num_rows($result)>0){
 				  <td>". $row['hire_date']."</td>
 		        </tr>";
 	}
-	echo " <script type='text/javascript'>
-
-	$(document).ready(function() {
-		$('.table-row').click(function() {
-		
-			thisdata = $(this).attr('data-href');
-	
-			window.location.href = thisdata;
+//script echo start
+	echo " 
+	<script type='text/javascript'>
+		$(document).ready(function() {
+			$('.table-row').click(function() {
+			
+				thisdata = $(this).attr('data-href');
+			
+				window.location.href = thisdata;
+			});
 		});
-	});
-	
-	</script>";
+	</script>
+	";//echo end
 }
 else{
 	echo "<tr><td>0 result's found</td></tr>";

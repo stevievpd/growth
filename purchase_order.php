@@ -24,7 +24,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 
 <body>
         <div class="purchase_wrapper">
-            <div class="purchase_order">
+            <div class="purchase_order"><b>
             </div>
         </div>
     <div class="container my-10" > 
@@ -78,28 +78,19 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
             <button class="btn btn-danger"><a href="display.php" class="text-light">Search Item</a></button>
             <div>
             <div class="form-group">
-            <button type="submit" class="btn btn-primary" name="submit">Import</button>
+            <span>Product Description</span>
             </div>
             <div class="form-group">
-            <button type="submit" class="btn btn-primary" name="submit">Auto Fill</button>
+            <span>Unit</span>
             </div>
             <div class="form-group">
-            <span>Instock</span>
+            <span>Quantity</span></span>
             </div>
             <div class="form-group">
-            <span>Incoming</span>
+            <span>Price</span>
             </div>
             <div class="form-group">
-            <span>Cost</span>
-            </div>
-            <div class="form-group">
-            <span>Amount</span>
-            </div>
-            <div class="form-group">
-            <span>Total</span>
-            </div>
-            <div class="form-group">
-            <span>0.00</span>
+            <span>Total Amount</span>
             </div>
             <button class="btn btn-danger"><a href="display.php" class="text-light">Cancel</a></button>
             <button type="submit" class="btn btn-primary" name="submit">Create</button>
@@ -111,8 +102,8 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 </html>
 <style type="text/css">
 .supplier{
-    width: 250px;
-    height:40px;
+    width: 600px;
+    height:35px;
     border-radius:2px;
     radius: 2px;
     padding: 0px;

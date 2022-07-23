@@ -20,7 +20,9 @@ if(!isset($_SESSION['IS_LOGIN'])){
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" href="css/myStyle.css">
-    <link rel="stylesheet" href="vendor/bootstrap.js">
+    
+    <script src="vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="vendor/jquery/jquery.js"></script>
 
 </head>
 

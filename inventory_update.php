@@ -3,7 +3,7 @@ require('db/db.php');
 include("header.php");
 $prodCode=$_GET['updateid'];
 $sql="SELECT * from inventory where prodCode=$prodCode";
-$result=mysqli_query($con,$sql);
+$result=mysqli_query($conn,$sql);
 $row=mysqli_fetch_assoc($result);
 $prodCode=$row['prodCode'];
 $prodDesc=$row['prodDesc'];

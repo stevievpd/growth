@@ -20,9 +20,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" href="css/myStyle.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="vendor/bootstrap.js">
 
 </head>
 
@@ -31,17 +29,16 @@ if(!isset($_SESSION['IS_LOGIN'])){
         <a class="navbar-brand mr-1" href="index.php">Start Bootstrap</a>
         <div class="d-none d-md-inline-block ml-auto"></div>
         <!-- Navbar -->
-        <ul class="navbar-nav ml-auto ml-md-0">
-            <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+        <div class="navbar-nav ml-auto ml-md-0">
+            <div class="nav-item dropdown no-arrow">
+                <a href="#" class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-user-circle fa-fw"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="logout.php">Logout</a>
                 </div>
-            </li>
-        </ul>
+            </div>
+        </div>
     </nav>
     <div id="wrapper">
         <!-- Sidebar -->

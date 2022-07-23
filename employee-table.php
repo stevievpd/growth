@@ -44,8 +44,6 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                     <th scope="col">Email</th>
                     <th scope="col">Phone number</th>
                     <th scope="col">Hire Date</th>
-                    <th scope="col">Action</th>
-
                 </tr>
             </thead>
             <tbody id="output">
@@ -56,6 +54,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     </div>
     </div>
     <?php include('footer.php')?>
+
 
     <script type="text/javascript">
     $(document).ready(function() {
@@ -70,6 +69,21 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                     $("#output").html(data);
                 }
             });
+        });
+    });
+    </script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.ajax({
+            type: 'POST',
+            url: 'search.php',
+            data: {
+                name: $("#search").val(),
+            },
+            success: function(data) {
+                $("#output").html(data);
+            }
         });
     });
     </script>

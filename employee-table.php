@@ -56,19 +56,19 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     </div>
     <?php include('footer.php')?>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $.ajax({
-            type: 'POST',
-            url: 'search.php',
-            data: {
-                name: $("#search").val(),
-            },
-            success: function(data) {
-                $("#output").html(data);
-            }
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajax({
+                type: 'POST',
+                url: 'search.php',
+                data: {
+                    name: $("#search").val(),
+                },
+                success: function(data) {
+                    $("#output").html(data);
+                }
+            });
         });
-    });
     </script>
 
 </body>

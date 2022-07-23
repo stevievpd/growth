@@ -50,16 +50,6 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 </section>
     </div>
     </div>
-    <?php include('footer.php')?>
-
-
-
-
-
-
-
-
-
 </body>
 </html>
 <?php include('footer.php')?>

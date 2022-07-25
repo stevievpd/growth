@@ -22,8 +22,23 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     <div class="container-fluid">
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-fw fa-user"></i>
-                Inventory
+                <div style="display: inline; text-align: center">
+                    <i class="fa fa-fw fa-user float-left" style="padding-top: 8px;"></i>
+                    <span>List of Customers</span>
+                </div>
+
+                <div style="display: inline">
+                    <form class="form-inline my-2 my-lg-0 float-right">
+                        <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search"
+                            aria-label="Search">
+                    </form>
+                    <button class="btn float-right">
+                        <a href="customer-add.php">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </a>
+                    </button>
+
+                </div>
             </div>
         </div>
         <table class="table table-hover">
@@ -32,42 +47,10 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                     <th scope="col">Customer ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Adress</th>
-                    <th scope="col">Action</th>
-
+                    <th scope="col">Address</th>
                 </tr>
             </thead>
-            <tbody>
-
-                    <?php
-
-                            $sql = "SELECT * from customer";
-                            $result=mysqli_query($conn, $sql);
-                            if($result){
-                            while($row=mysqli_fetch_assoc($result))
-                            {
-                                $customer_id=$row['customer_id'];
-                                $customer_name=$row['customer_name'];
-                                $customer_email=$row['customer_email'];
-                                $customer_address=$row['customer_address'];
-
-                                echo ' <tr>
-                                <th scope="row">'.$customer_id.'</th>
-                                <td>'.$customer_name.'</td>
-                                <td>'.$customer_email.'</td>
-                                <td>'.$customer_address.'</td> 
-                                <td>
-                                <button class ="btn btn-primary my-1"><a href="invupdate.php?updateid= '.$customer_id.'" class = "text-light">Update</a></button>
-                                <button class ="btn btn-danger my-1"><a href="invdelete.php?deleteid= '.$customer_id.'" class = "text-light">Delete</a></button>
-                                <button class ="btn btn-warning my-1"><a href="viewinv.php?viewid= '.$customer_id.'" class = "text-light">View</a></button>        
-                                </td>
-                                <tr>';
-                                }
-                                
-                            }
-
-                            ?>
-
+            <tbody id="output">
 
             </tbody>
 
@@ -76,5 +59,42 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     </div>
     <?php include('footer.php')?>
 
+
+    <!-- Populate table script -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $.ajax({
+            type: 'POST',
+            url: 'queries/customer-search.php',
+            data: {
+                name: $("#search").val(),
+            },
+            success: function(data) {
+                $("#output").html(data);
+            }
+        });
+    });
+    </script>
+
+    <!-- Search script on keypress -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#search').keyup(function() {
+            $.ajax({
+                type: 'POST',
+                url: 'queries/customer-search.php',
+                data: {
+                    name: $("#search").val(),
+                },
+                success: function(data) {
+                    $("#output").html(data);
+                }
+            });
+        });
+    });
+    </script>
+
+
 </body>
+
 </html>

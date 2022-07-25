@@ -1,6 +1,7 @@
 <?php 
 require('db/db.php');
 include('header.php');
+include('employee_modal.php');
 if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 	header('location:news.php');
 	die();
@@ -23,18 +24,30 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     <div class="container-fluid">
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-fw fa-user float-left" style="padding-top: 8px;"></i>
-                <p class="float-left" style="padding-top: 2px">List of Employees</p>
+                <div style="display: inline; text-align: center">
+                    <i class="fa fa-fw fa-user float-left" style="padding-top: 8px;"></i>
+                    <span>List of Employees</span>
+                </div>
 
-                <form class="form-inline my-2 my-lg-0 float-right">
-                    <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search"
-                        aria-label="Search">
-                </form>
-                <button class="btn float-right">
-                    <a href="employee-add.php">
-                        <i class="fa-solid fa-user-plus"></i>
-                    </a>
-                </button>
+                <div style="display: inline">
+
+                    <form class="form-inline my-2 my-lg-0 float-right">
+                        <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search"
+                            aria-label="Search">
+                    </form>
+                    <button class="btn float-right">
+                        <a href="employee-add.php">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </a>
+                    </button>
+                    <button class="btn float-right">
+                        <a href="employee-reports.php">
+                            <i class="fa-solid fa-rocket"></i>
+                        </a>
+                    </button>
+
+                </div>
+
             </div>
         </div>
         <table class="table table-hover">
@@ -53,7 +66,10 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 
         </table>
     </div>
-    </div>
+
+
+
+    
     <?php include('footer.php')?>
 
     <script type="text/javascript">
@@ -88,7 +104,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     });
     </script>
 
-    
+
 
 </body>
 

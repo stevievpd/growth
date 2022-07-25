@@ -12,7 +12,7 @@ if(mysqli_num_rows($result)>0){
 				  <td>". $row['quantity']."</td>
 		        </tr>";
 	}
-//script echo start
+	//script echo start
 	echo " 
 	<script type='text/javascript'>
 		$(document).ready(function() {

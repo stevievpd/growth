@@ -47,7 +47,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                     <th scope="col">Quantity</th>
                 </tr>
             </thead>
-            <tbody id="output">
+            <tbody id="output"> <!-- Table -->
 
             </tbody>
 
@@ -56,6 +56,8 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     </div>
     <?php include('footer.php')?>
 
+
+    <!-- Populate table script -->
     <script type="text/javascript">
     $(document).ready(function() {
         $.ajax({
@@ -71,6 +73,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     });
     </script>
 
+    <!-- Search script on keypress -->
     <script type="text/javascript">
     $(document).ready(function() {
         $('#search').keyup(function() {

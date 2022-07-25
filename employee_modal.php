@@ -1,115 +1,44 @@
-<!-- Add -->
-<div class="modal fade" id="addemployee">
-    <div class="modal-dialog">
-        <div class="modal-content">
-          	<div class="modal-header">
-            	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              		<span aria-hidden="true">&times;</span></button>
-            	<h4 class="modal-title"><b>Add Employee</b></h4>
-          	</div>
-          	<div class="modal-body">
-            	<form class="form-horizontal" method="POST" action="employee_add.php" enctype="multipart/form-data">
-          		  <div class="form-group">
-                  	<label for="firstname" class="col-sm-3 control-label">Firstname</label>
 
-                  	<div class="col-sm-9">
-                    	<input type="text" class="form-control" id="firstname" name="firstname" required>
-                  	</div>
-                </div>
-                <div class="form-group">
-                  	<label for="lastname" class="col-sm-3 control-label">Lastname</label>
+<?php
 
-                  	<div class="col-sm-9">
-                    	<input type="text" class="form-control" id="lastname" name="lastname" required>
-                  	</div>
-                </div>
-                <div class="form-group">
-                  	<label for="address" class="col-sm-3 control-label">Address</label>
+require('db/db.php');
+$sql="SELECT * from employees where 1";
+$result=mysqli_query($conn,$sql);
+$row=mysqli_fetch_assoc($result);
+$firstname=$row['firstname'];
+$lastname=$row['lastname'];
+$address=$row['address'];
+$birthdate=$row['birthdate'];
+$contact_info=$row['contact_info'];
+$gender=$row['gender'];
 
-                  	<div class="col-sm-9">
-                      <textarea class="form-control" name="address" id="address"></textarea>
-                  	</div>
-                </div>
-                <div class="form-group">
-                  	<label for="datepicker_add" class="col-sm-3 control-label">Birthdate</label>
 
-                  	<div class="col-sm-9"> 
-                      <div class="date">
-                        <input type="text" class="form-control" id="datepicker_add" name="birthdate">
-                      </div>
-                  	</div>
-                </div>
-                <div class="form-group">
-                    <label for="contact" class="col-sm-3 control-label">Contact Info</label>
+	if(isset($_POST['edit'])){
+		$empid = $_POST['id'];
+		$firstname =$_POST['firstname'];
+		$lastname = $_POST['lastname'];
+		$address = $_POST['address'];
+		$birthdate = $_POST['birthdate'];
+		$contact = $_POST['contact'];
+		$gender = $_POST['gender'];
+		$position = $_POST['position'];
+		$schedule = $_POST['schedule'];
+        
+		
+		$sql = "UPDATE employees SET firstname = '$firstname', lastname = '$lastname', address = '$address', birthdate = '$birthdate', contact_info = '$contact', gender = '$gender', position_id = '$position', schedule_id = '$schedule' WHERE id = '$empid'";
+		if($conn->query($sql)){
+			$_SESSION['success'] = 'Employee updated successfully';
+		}
+		else{
+			$_SESSION['error'] = $conn->error;
+		}
 
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="contact" name="contact">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="gender" class="col-sm-3 control-label">Gender</label>
+	}
+	else{
+		$_SESSION['error'] = 'Select employee to edit first';
+	}
 
-                    <div class="col-sm-9"> 
-                      <select class="form-control" name="gender" id="gender" required>
-                        <option value="" selected>- Select -</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                      </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="position" class="col-sm-3 control-label">Position</label>
-
-                    <div class="col-sm-9">
-                      <select class="form-control" name="position" id="position" required>
-                        <option value="" selected>- Select -</option>
-                        <?php
-                          $sql = "SELECT * FROM position";
-                          $query = $conn->query($sql);
-                          while($prow = $query->fetch_assoc()){
-                            echo "
-                              <option value='".$prow['id']."'>".$prow['description']."</option>
-                            ";
-                          }
-                        ?>
-                      </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="schedule" class="col-sm-3 control-label">Schedule</label>
-
-                    <div class="col-sm-9">
-                      <select class="form-control" id="schedule" name="schedule" required>
-                        <option value="" selected>- Select -</option>
-                        <?php
-                          $sql = "SELECT * FROM schedules";
-                          $query = $conn->query($sql);
-                          while($srow = $query->fetch_assoc()){
-                            echo "
-                              <option value='".$srow['id']."'>".$srow['time_in'].' - '.$srow['time_out']."</option>
-                            ";
-                          }
-                        ?>
-                      </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="photo" class="col-sm-3 control-label">Photo</label>
-
-                    <div class="col-sm-9">
-                      <input type="file" name="photo" id="photo">
-                    </div>
-                </div>
-          	</div>
-          	<div class="modal-footer">
-            	<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-            	<button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i> Save</button>
-            	</form>
-          	</div>
-        </div>
-    </div>
-</div>
-
+?>
 <!-- Edit -->
 <div class="modal fade" id="edit">
     <div class="modal-dialog">
@@ -126,21 +55,21 @@
                     <label for="edit_firstname" class="col-sm-3 control-label">Firstname</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="edit_firstname" name="firstname">
+                      <input type="text" class="form-control" id="edit_firstname" name="firstname" value = <?php echo $firstname;?>>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="edit_lastname" class="col-sm-3 control-label">Lastname</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="edit_lastname" name="lastname">
+                      <input type="text" class="form-control" id="edit_lastname" name="lastname" value = <?php echo $lastname;?>>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="edit_address" class="col-sm-3 control-label">Address</label>
 
                     <div class="col-sm-9">
-                      <textarea class="form-control" name="address" id="edit_address"></textarea>
+                      <input type="text" class="form-control" name="address" id="edit_address" value = <?php echo $address?>>
                     </div>
                 </div>
                 <div class="form-group">
@@ -148,7 +77,7 @@
 
                     <div class="col-sm-9"> 
                       <div class="date">
-                        <input type="text" class="form-control" id="datepicker_edit" name="birthdate">
+                        <input type="date" class="form-control" id="datepicker_edit" name="birthdate" value = <?php echo $birthdate;?>>
                       </div>
                     </div>
                 </div>
@@ -156,7 +85,7 @@
                     <label for="edit_contact" class="col-sm-3 control-label">Contact Info</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="edit_contact" name="contact">
+                      <input type="text" class="form-control" id="edit_contact" name="contact" value = <?php echo $contact_info;?>>
                     </div>
                 </div>
                 <div class="form-group">
@@ -174,8 +103,8 @@
                     <label for="edit_position" class="col-sm-3 control-label">Position</label>
 
                     <div class="col-sm-9">
-                      <select class="form-control" name="position" id="edit_position">
-                        <option selected id="position_val"></option>
+                      <select class="form-control" name="position" id="edit_position" >
+                        <option selected id="position_val" ></option>
                         <?php
                           $sql = "SELECT * FROM position";
                           $query = $conn->query($sql);
@@ -208,8 +137,9 @@
                 </div>
           	</div>
           	<div class="modal-footer">
-            	<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
             	<button type="submit" class="btn btn-success btn-flat" name="edit"><i class="fa fa-check-square-o"></i> Update</button>
+                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+
             	</form>
           	</div>
         </div>
@@ -241,32 +171,5 @@
         </div>
     </div>
 </div>
+  
 
-<!-- Update Photo -->
-<div class="modal fade" id="edit_photo">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b><span class="del_employee_name"></span></b></h4>
-            </div>
-            <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="employee_edit_photo.php" enctype="multipart/form-data">
-                <input type="hidden" class="empid" name="id">
-                <div class="form-group">
-                    <label for="photo" class="col-sm-3 control-label">Photo</label>
-
-                    <div class="col-sm-9">
-                      <input type="file" id="photo" name="photo" required>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-              <button type="submit" class="btn btn-success btn-flat" name="upload"><i class="fa fa-check-square-o"></i> Update</button>
-              </form>
-            </div>
-        </div>
-    </div>
-</div>    

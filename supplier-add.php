@@ -5,15 +5,18 @@ if(isset($_POST['submit'])){
 
     $supplier_name=$_POST['supplier_name'];
     $address=$_POST['address'];
-    $phone=$_POST['phone'];
-    $email=$_POST['email'];
     $city=$_POST['city'];
     $country=$_POST['country'];
-    $state_province=$_POST['state_province'];
-    $postal_code=$_POST['postal_code'];
+    $email=$_POST['email'];
+    $phone=$_POST['phone'];
+    $bank_account=$_POST['bank_account'];
+    $branch=$_POST['branch'];
+    $tin=$_POST['tin'];
+    $tax=$_POST['tax'];
     $stamp=$_POST['stamp'];
+
     
-    $sql="INSERT INTO supplier (supplier_name, address, phone, email, city, country, state_province, postal_code, stamp) values  ('$supplier_name','$address','$phone','$email','$city', '$country', '$state_province','$postal_code','$stamp')";
+    $sql="INSERT INTO supplier (supplier_name, address, city, country, email, phone, bank_account, branch, tin, tax, stamp) values  ('$supplier_name','$address','$city', '$country','$email','$phone', '$bank_account','$branch','$tin','$tax','$stamp')";
     $result=mysqli_query($conn,$sql);
     if($result){
 
@@ -41,7 +44,8 @@ if(isset($_POST['submit'])){
 <body>
     <div class="purchase_wrapper">
         <div class="container my-10">
-            <form method="post">
+            <form method="post">      
+</div>
                 <div class="form-group">
                     <label>Supplier Name</label>
                     <input type="text" class="form-control" placeholder="Enter Supplier Name" name="supplier_name"
@@ -54,17 +58,6 @@ if(isset($_POST['submit'])){
                         required>
                 </div>
 
-                <div class="form-group">
-                    <label>Phone</label>
-                    <input type="number" class="form-control" placeholder="Enter phone" name="phone" autocomplete="off"
-                        required>
-                </div>
-
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control" placeholder="Enter email" name="email" autocomplete="off"
-                        required>
-                </div>
 
                 <div class="form-group">
                     <label>City</label>
@@ -77,22 +70,37 @@ if(isset($_POST['submit'])){
                     <input type="text" class="form-control" placeholder="Enter county" name="country" autocomplete="off"
                         required>
                 </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" placeholder="Enter email" name="email" autocomplete="off"
+                        required>
+                </div>
 
                 <div class="form-group">
-                    <label>State/Province</label>
-                    <input type="text" class="form-control" placeholder="Enter state/province" name="state_province"
+                    <label>Bank Account</label>
+                    <input type="text" class="form-control" placeholder="Enter bank account" name="bank_account"
                         autocomplete="off" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Postal/Zip Code</label>
-                    <input type="number" class="form-control" placeholder="Enter postal/zip code" name="postal_code"
+                    <label>Branch</label>
+                    <input type="text" class="form-control" placeholder="Enter branch" name="branch"
                         autocomplete="off" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Date</label>
-                    <input type="date" class="form-control" placeholder="Enter stamp" name="stamp" autocomplete="off"
+                    <label>Tin</label>
+                    <input type="tel",  min=0, max=10, step=1 class="form-control" placeholder="Enter tin" name="tin" autocomplete="off"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label>Holding Tax</label>
+                    <input type="number" class="form-control" placeholder="Enter tax" name="tax" autocomplete="off"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label>stamp</label>
+                    <input type="date" class="form-control" placeholder="Enter date" name="date" autocomplete="off"
                         required>
                 </div>
 
@@ -106,14 +114,9 @@ if(isset($_POST['submit'])){
 
 </body>
 
-</html>
-<!--<style type="text/css">
-#display_image {
-    width: 300px;
-    height: 211px;
-    border: 1px solid black;
-    background-position: center;
-    background-size: cover;
-    padding: 0px;
+<style type="text/css">
+.purchase_wrapper {
+
+    padding: 100px;
 }
 </style>

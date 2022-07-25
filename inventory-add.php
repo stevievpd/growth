@@ -49,7 +49,7 @@ if(isset($_POST['submit'])){
             </div>
             <div class="form-group">
                 <label>Unit:</label>
-                <input type="text" class="form-control" placeholder="Enter unit " name="unit" autocomplete="off"  autocomplete="off" required>
+                <input type="number" class="form-control" placeholder="Enter unit " name="unit" autocomplete="off"  autocomplete="off" required>
             </div>
             <div class="form-group">
                 <label>Quantity: </label>

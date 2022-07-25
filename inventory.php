@@ -78,6 +78,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
             </tbody>
 
         </table>
+        <button class ="btn btn-danger"><a href="supplier_table.php"class = "text-light">Supplier</a></button>
     </div>
     </div>
     <?php include('footer.php')?>

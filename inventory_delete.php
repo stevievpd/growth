@@ -1,5 +1,4 @@
 <?php
-
 require('db/db.php');
 include('header.php');
 

@@ -40,12 +40,12 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col">Employee ID</th>
-                    <th scope="col">First name</th>
-                    <th scope="col">Last name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone number</th>
-                    <th scope="col">Hire Date</th>
+                    <th>Employee ID</th>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Schedule</th>
+                    <th>Member Since</th>
                 </tr>
             </thead>
             <tbody id="output">

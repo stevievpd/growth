@@ -86,6 +86,12 @@ if(!isset($_SESSION['IS_LOGIN'])){
                     <span>Puchase Order</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="attendance.php">
+                    <i class="fa fa-fw fa-newspaper"></i>
+                    <span>Attendance</span></a>
+            </li>
+
             <?php } ?>
 
             <li class="nav-item">

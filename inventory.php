@@ -47,33 +47,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                     <th scope="col">Quantity</th>
                 </tr>
             </thead>
-            <tbody>
-
-                <?php
-
-                            $sql = "SELECT * from inventory";
-                            $result=mysqli_query($conn, $sql);
-                            if($result){
-                            while($row=mysqli_fetch_assoc($result))
-                            {
-                                $prodCode=$row['prodCode'];
-                                $prodDesc=$row['prodDesc'];
-                                $unit=$row['unit'];
-                                $quantity=$row['quantity'];
-
-                                echo ' <tr>
-                                <th scope="row">'.$prodCode.'</th>
-                                <td>'.$prodDesc.'</td>
-                                <td>'.$unit.'</td>
-                                <td>'.$quantity.'</td> 
-                                <td>
-                                <tr>';
-                                }
-                                
-                            }
-
-                            ?>
-
+            <tbody id="output">
 
             </tbody>
 
@@ -86,7 +60,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     $(document).ready(function() {
         $.ajax({
             type: 'POST',
-            url: 'queries/employee-search.php',
+            url: 'queries/inventory-search.php',
             data: {
                 name: $("#search").val(),
             },
@@ -102,7 +76,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
         $('#search').keyup(function() {
             $.ajax({
                 type: 'POST',
-                url: 'queries/employee-search.php',
+                url: 'queries/inventory-search.php',
                 data: {
                     name: $("#search").val(),
                 },

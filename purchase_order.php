@@ -12,16 +12,12 @@ if(isset($_POST['submit'])){
     $price=$_POST['price'];
     $amount_total=$_POST['amount_total'];
 
-    
     $sql="INSERT INTO purchase_order (supplier_name, purchase_date, expected_date, notes, item, quantity, price, amount_total) values  ('$supplier_name','$purchase_date','$expected_date','$notes', '$item', '$quantity','$price','$amount_total')";
     $result=mysqli_query($conn,$sql);
     if($result){
-
         header("Location: purchase_create.php");
     }
-    else{
-    }
-         die(mysqli_error($conn));
+    die(mysqli_error($conn));
 }                                      
 ?>
 
@@ -41,130 +37,124 @@ if(isset($_POST['submit'])){
 </head>
 
 <body onload="multiply();">
-        <div class="purchase_wrapper">
-        <div class="form-group">        
-        <div class="Select-supplier">
-                <option>Select item<option>
-            </div>
-            <?php
-                    $mysqli =NEW MySQLi('localhost','root','','growth');
+    <div class="purchase_wrapper">
+        <form method="post">
+            <div class="form-group">
+                <div class="Select-supplier">
+                    <option>Select supplier
+                    </option>
+                </div>
+                <?php
+                    $mysqli = mysqli_connect('localhost','root','','growth');
                     $resultSet = $mysqli ->query("SELECT supplier_name FROM supplier");
                     $color1 = "#b3b3b3";
                     $color2 = "#cccccc";
                     $color = $color1;
 
-            ?>  
-    <select class="supplier"><br>
-    <?php
-    while ($rows = $resultSet ->fetch_assoc())
-    {
-        $color == $color1 ? $color = $color2 : $color = $color1;
-        $supplier_name = $rows ['supplier_name'];
-        echo "<option value = '$supplier_name' style='background:$color;'>$supplier_name</option>";
-    }
-    ?>
-<label class="first-column"></label><div class="second-column">
-</select>
-</div>
-<form method="post">
-    
+                ?>
+                <select class="supplier" name="supplier_name"><br>
+                    <?php
+                        while ($rows = $resultSet ->fetch_assoc())
+                        {
+                            $color == $color1 ? $color = $color2 : $color = $color1;
+                            $supplier_name = $rows ['supplier_name'];
+                            echo "<option value = '$supplier_name' style='background:$color;'>$supplier_name</option>";
+                        }
+                    ?>
+                </select>
             </div>
             <div class="form-group">
                 <label>Purchase Date</label>
-                <input type="date" class="form-control"
-                    placeholder="Enter purchase date" name="purchase_date" autocomplete="off" required>
+                <input type="date" class="form-control" placeholder="Enter purchase date" name="purchase_date"
+                    autocomplete="off" required>
             </div>
             <div class="form-group">
                 <label>Expected Date</label>
-                <input type="date" class="form-control"
-                    placeholder="Enter expected date" name="expected_date" autocomplete="off" required>
+                <input type="date" class="form-control" placeholder="Enter expected date" name="expected_date"
+                    autocomplete="off" required>
             </div>
             <div class="form-group">
                 <label>Notes</label>
-                <input type="text" minlength="11" maxlength="15" class="form-control" placeholder="Enter notes" name="note"
-                    autocomplete="off" required>
+                <input type="text" class="form-control" placeholder="Enter notes" name="notes" autocomplete="off"
+                    required>
             </div>
-</form>
-
-        <div class="form-group">        
-<div class="Select-item">
-                <option>Select item<option>
-            </div>
-            <?php
-                    $mysqli =NEW MySQLi('localhost','root','','growth');
+            <div class="form-group">
+                <div class="Select-item">
+                    <option>Select item
+                    </option>
+                </div>
+                <?php
+                    $mysqli =mysqli_connect('localhost','root','','growth');
                     $resultSet = $mysqli ->query("SELECT prodDesc FROM inventory");
                     $color1 = "#b3b3b3";
                     $color2 = "#cccccc";
                     $color = $color1;
 
-            ?>  
-    <select class="item"><br>
-    <?php
-    while ($rows = $resultSet ->fetch_assoc())
-    {
-        $color == $color1 ? $color = $color2 : $color = $color1;
-        $prodDesc = $rows ['prodDesc'];
-        echo "<option value = '$prodDesc' style='background:$color;'>$prodDesc</option>";
-    }
-    ?>
-<label class="first-column"></label><div class="second-column">
-</select>
-</div>
-
-            <div class="form-group"><br>
-            <label>Quantity:</label>
-                <input class="form-control" type="number" name="quantity" id="one" value="0" autocomplete="off" onchange="multiply();">
+                ?>
+                <select class="item" name="item"><br>
+                    <?php
+                    while ($rows = $resultSet ->fetch_assoc()){
+                        $color == $color1 ? $color = $color2 : $color = $color1;
+                        $prodDesc = $rows ['prodDesc'];
+                        echo "<option value = '$prodDesc' style='background:$color;'>$prodDesc</option>";
+                    }
+                ?>
+                </select>
             </div>
 
             <div class="form-group"><br>
-            <label>Price:</label>
-                <input class="form-control" type="number" name="price" id="two" value="0" autocomplete="off" onchange="multiply();">
+                <label>Quantity:</label>
+                <input class="form-control" value="1" type="number" name="quantity" id="qtyId" autocomplete="off"
+                    oninput="multiply()">
+            </div>
+
+            <div class="form-group"><br>
+                <label>Price:</label>
+                <input class="form-control" value="1" type="number" name="price" id="priId" autocomplete="off"
+                    oninput="multiply()">
             </div>
             <div class="form-group"><br>
-            <label>Total Amount:</label>
-                <input class="form-control" type="text" name="total" id="total" >
+                <label>Total Amount:</label>
+                <input class="form-control" type="text" name="amount_total" id="total" placeholder="100000" readonly>
             </div>
             <button class="btn btn-danger"><a href="purchase_create.php" class="text-light">Cancel</a></button>
             <button type="submit" class="btn btn-primary" name="submit">Create</button>
         </form>
 
-           
-</div>
-</div>
+    </div>
 
-<script>
-function multiply(){
-    var quantity = document.getElementById("one").value;
-    var price = document.getElementById("two").value;
-    var total = parseFloat(quantity)*parseFloat(price);
-    document.getElementById("total").value = total; 
-}
-
-</script>
+    <script>
+        function multiply() {
+            var quantity = document.getElementById("qtyId").value;
+            var price = document.getElementById("priId").value;
+            var total = parseFloat(quantity) * parseFloat(price);
+            document.getElementById("total").value = total;
+        }
+    </script>
 
 </body>
 
 </html>
 <style type="text/css">
-.supplier{
+.supplier {
     width: 300px;
-    height:35px;
-    border-radius:2px;
-    radius: 2px;
-    padding: 0px;
-    align: center;
-}
-.item{
-    width: 300px;
-    height:35px;
-    border-radius:2px;
+    height: 35px;
+    border-radius: 2px;
     radius: 2px;
     padding: 0px;
     align: center;
 }
 
-#content-wrapper{
+.item {
+    width: 300px;
+    height: 35px;
+    border-radius: 2px;
+    radius: 2px;
+    padding: 0px;
+    align: center;
+}
+
+#content-wrapper {
     padding: 100px;
-
 }
-    </style>
+</style>

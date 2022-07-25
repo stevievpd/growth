@@ -22,7 +22,6 @@ if(isset($_POST['purchase_order'])){
 
     $sql="INSERT INTO purchase_order (supplier_name, purchase_order, exepted_date, notes, item, quantity, price, amount_total) values ('$supplier_name', '$purchase_order','$expected_date', '$notes','$item', '$quantity','$price', '$amount_total')";
     $result=mysqli_query($conn,$sql);
-    
     if($result){
         $_SESSION['status']="Inserted Successfully";
         header("Location: purchase_create.php");

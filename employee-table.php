@@ -41,7 +41,6 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
             <thead>
                 <tr>
                     <th>Employee ID</th>
-                    <th>Photo</th>
                     <th>Name</th>
                     <th>Position</th>
                     <th>Schedule</th>

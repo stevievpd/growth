@@ -23,7 +23,6 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     <div class="container-fluid">
         <div class="card mb-3">
             <div class="card-header">
-
                 <div style="display: inline; text-align: center">
                     <i class="fa fa-fw fa-user float-left" style="padding-top: 8px;"></i>
                     <span>List of Employees</span>
@@ -38,6 +37,11 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                     <button class="btn float-right">
                         <a href="employee-add.php">
                             <i class="fa-solid fa-user-plus"></i>
+                        </a>
+                    </button>
+                    <button class="btn float-right">
+                        <a href="employee-reports.php">
+                            <i class="fa-solid fa-rocket"></i>
                         </a>
                     </button>
 

@@ -42,6 +42,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
             <thead>
                 <tr>
                     <th scope="col">Product Code</th>
+                    <th scope="col">Product Name</th>
                     <th scope="col">Description</th>
                     <th scope="col">Unit</th>
                     <th scope="col">Quantity</th>

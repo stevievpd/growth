@@ -93,7 +93,7 @@ if(isset($_POST['submit'])){
             </div>
 
             <button type="submit" class="btn btn-primary" name = "submit" >Submit</button>
-            <button class ="btn btn-danger"><a href="display.php"class = "text-light">Cancel</a></button>
+            <button class ="btn btn-danger"><a href="employee-table.php"class = "text-light">Cancel</a></button>
 
             
         </form>

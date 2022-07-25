@@ -23,7 +23,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 
     <div class="container-fluid">
         <div class="card mb-3">
-            <div class="card-header">
+            <div class="card-header">       
                 <div style="display: inline; text-align: center">
                     <span class="fa fa-fw fa-user float-left" style="padding-top: 8px;"></span>
                     <span style="line-height: 2; padding-left: 8px">List of Employees</span>

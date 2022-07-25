@@ -7,13 +7,20 @@ $sql = "SELECT *, employees.id AS empid FROM employees LEFT JOIN position ON pos
 $result = mysqli_query($conn, $sql);
 if(mysqli_num_rows($result)>0){
 	while ($row=mysqli_fetch_assoc($result)) {
-		echo "	<tr class='table-row' data-target='#edit'>
+		echo "	<tr class='table-row' data-target='#edit' data-id='".$row['empid']."'>
 				  <td>". $row['employee_id']."</td>
 				  <td>". $row['firstname']." ". $row['lastname']."</td>
 				  <td>". $row['description']."</td>
-				  <td>". $row['time_in']." ". $row['time_out']."</td>
-				  <td>". $row['created_on']."</td>
-		        </tr>";
+				  <td>". date('h:i A', strtotime($row['time_in']))." ". date('h:i A', strtotime($row['time_out']))."</td>
+				  <td>". date('M d, Y', strtotime($row['created_on']))."</td>
+		        </tr>
+		
+				
+				";
+
+
+
+
 	}
 //script echo start 
 		echo " 
@@ -30,6 +37,7 @@ if(mysqli_num_rows($result)>0){
 		echo "<tr><td>0 result's found</td></tr>";
 	
 }
+include 'employee_modal.php';
 
 ?>
 

@@ -1,7 +1,7 @@
-
+<!-- 
 <?php
     require('db/db.php');
-    $results_per_page = 5;
+    $results_per_page = 10;
     $sql = "SELECT * FROM employees";
     $result = mysqli_query($conn, $sql);
 
@@ -28,4 +28,4 @@
         echo '<a href = "pagination.php?page=' . $page . '">'. $page .'</a>';
     }
 
-?>
+?> -->

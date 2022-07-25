@@ -25,8 +25,8 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
         <div class="card mb-3">
             <div class="card-header">
                 <div style="display: inline; text-align: center">
-                    <i class="fa fa-fw fa-user float-left" style="padding-top: 8px;"></i>
-                    <span>List of Employees</span>
+                    <span class="fa fa-fw fa-user float-left" style="padding-top: 8px;"></span>
+                    <span style="line-height: 2; padding-left: 8px">List of Employees</span>
                 </div>
 
                 <div style="display: inline">
@@ -67,9 +67,6 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
         </table>
     </div>
 
-
-
-    
     <?php include('footer.php')?>
 
     <script type="text/javascript">

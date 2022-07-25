@@ -7,7 +7,7 @@ $sql = "SELECT *, employees.id AS empid FROM employees LEFT JOIN position ON pos
 $result = mysqli_query($conn, $sql);
 if(mysqli_num_rows($result)>0){
 	while ($row=mysqli_fetch_assoc($result)) {
-		echo "	<tr class='table-row' data-target='#addemployee'>
+		echo "	<tr class='table-row' data-target='#edit'>
 				  <td>". $row['employee_id']."</td>
 				  <td>". $row['firstname']." ". $row['lastname']."</td>
 				  <td>". $row['description']."</td>
@@ -20,14 +20,14 @@ if(mysqli_num_rows($result)>0){
 		<script type='text/javascript'>
 			$(document).ready(function() {
 				$('.table-row').click(function() {
-					$('#addemployee').modal();
+					$('#edit').modal();
 				});
 			});
 		</script>
 		";
-}
-else{
-	echo "<tr><td>0 result's found</td></tr>";
+	}
+	else{
+		echo "<tr><td>0 result's found</td></tr>";
 	
 }
 

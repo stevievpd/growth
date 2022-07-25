@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
 }                                      
 ?>
 
-<body>
+
 <!doctype html>
 <html lang="en">
 

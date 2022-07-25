@@ -1,6 +1,7 @@
 <?php 
 require('db/db.php');
 include('header.php');
+include('employee_modal.php');
 if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 	header('location:news.php');
 	die();
@@ -65,7 +66,10 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 
         </table>
     </div>
-    </div>
+
+
+
+    
     <?php include('footer.php')?>
 
     <script type="text/javascript">

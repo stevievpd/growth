@@ -3,19 +3,18 @@ require('db/db.php');
 include('header.php');
 if(isset($_POST['submit'])){
 
-    $supplier_name=$_POST['supplier_name'];
+    $id=$_POST['id'];
     $purchase_date=$_POST['purchase_date'];
     $expected_date=$_POST['expected_date'];
-    $notes=$_POST['notes'];
     $item=$_POST['item'];
     $quantity=$_POST['quantity'];
     $price=$_POST['price'];
     $amount_total=$_POST['amount_total'];
 
-    $sql="INSERT INTO purchase_order (supplier_name, purchase_date, expected_date, notes, item, quantity, price, amount_total) values  ('$supplier_name','$purchase_date','$expected_date','$notes', '$item', '$quantity','$price','$amount_total')";
+    $sql="INSERT INTO purchase_order (id, purchase_date, expected_date, item, quantity, price, amount_total) values  ('$id','$purchase_date','$expected_date', '$item', '$quantity','$price','$amount_total')";
     $result=mysqli_query($conn,$sql);
     if($result){
-        header("Location: purchase_create.php");
+        header("Location: purchase_table.php");
     }
     die(mysqli_error($conn));
 }                                      
@@ -35,7 +34,7 @@ if(isset($_POST['submit'])){
     <title> Purchase Order</title>
 
 </head>
-
+<h2>Purchase Order</h2>
 <body onload="multiply();">
     <div class="purchase_wrapper">
         <form method="post">
@@ -45,8 +44,7 @@ if(isset($_POST['submit'])){
                     </option>
                 </div>
                 <?php
-                    $mysqli = mysqli_connect('localhost','root','','growth');
-                    $resultSet = $mysqli ->query("SELECT supplier_name FROM supplier");
+    
                     $color1 = "#b3b3b3";
                     $color2 = "#cccccc";
                     $color = $color1;
@@ -54,6 +52,8 @@ if(isset($_POST['submit'])){
                 ?>
                 <select class="supplier" name="supplier_name"><br>
                     <?php
+                        $mysqli = mysqli_connect('localhost','root','','growth');
+                      $resultSet = $mysqli ->query("SELECT *, supplier.id AS supid FROM supplier LEFT JOIN supplier_product ON supplier_product.id=supplier.id LEFT JOIN purchase_order ON purchase_order.id=supplier.id;");
                         while ($rows = $resultSet ->fetch_assoc())
                         {
                             $color == $color1 ? $color = $color2 : $color = $color1;
@@ -63,29 +63,25 @@ if(isset($_POST['submit'])){
                     ?>
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group  w-25">
                 <label>Purchase Date</label>
                 <input type="date" class="form-control" placeholder="Enter purchase date" name="purchase_date"
                     autocomplete="off" required>
             </div>
-            <div class="form-group">
+            <div class="form-group w-25">
                 <label>Expected Date</label>
                 <input type="date" class="form-control" placeholder="Enter expected date" name="expected_date"
                     autocomplete="off" required>
             </div>
-            <div class="form-group">
-                <label>Notes</label>
-                <input type="text" class="form-control" placeholder="Enter notes" name="notes" autocomplete="off"
-                    required>
-            </div>
-            <div class="form-group">
+
+            <div class="form-group  w-25">
                 <div class="Select-item">
                     <option>Select item
                     </option>
                 </div>
                 <?php
                     $mysqli =mysqli_connect('localhost','root','','growth');
-                    $resultSet = $mysqli ->query("SELECT prodDesc FROM inventory");
+                    $resultSet = $mysqli ->query("SELECT *, supplier.id AS supid FROM supplier LEFT JOIN supplier_product ON supplier_product.id=supplier.id LEFT JOIN purchase_order ON purchase_order.id=supplier.id");
                     $color1 = "#b3b3b3";
                     $color2 = "#cccccc";
                     $color = $color1;
@@ -93,44 +89,48 @@ if(isset($_POST['submit'])){
                 ?>
                 <select class="item" name="item"><br>
                     <?php
+                    $mysqli =mysqli_connect('localhost','root','','growth');
+                    $resultSet = $mysqli ->query("SELECT *, supplier.id AS supid FROM supplier LEFT JOIN supplier_product ON supplier_product.id=supplier.id LEFT JOIN purchase_order ON purchase_order.id=supplier.id");
                     while ($rows = $resultSet ->fetch_assoc()){
                         $color == $color1 ? $color = $color2 : $color = $color1;
-                        $prodDesc = $rows ['prodDesc'];
-                        echo "<option value = '$prodDesc' style='background:$color;'>$prodDesc</option>";
+                        $supProdDesc = $rows ['supProdDesc'];
+                        echo "<option value = '$supProdDesc' style='background:$color;'>$supProdDesc</option>";
                     }
                 ?>
                 </select>
             </div>
 
-            <div class="form-group"><br>
+            <div class="form-group  w-25">
                 <label>Quantity:</label>
-                <input class="form-control" value="1" type="number" name="quantity" id="qtyId" autocomplete="off"
+                <input class="form-control" value="0.00" type="number" name="quantity" id="qtyId" autocomplete="off"
                     oninput="multiply()">
             </div>
 
-            <div class="form-group"><br>
+            <div class="form-group  w-25"><br>
                 <label>Price:</label>
-                <input class="form-control" value="1" type="number" name="price" id="priId" autocomplete="off"
+                <input class="form-control" value="0.00" type="number" name="price" id="priId" autocomplete="off"
                     oninput="multiply()">
             </div>
-            <div class="form-group"><br>
+            <div class="form-group  w-25"><br>
                 <label>Total Amount:</label>
-                <input class="form-control" type="text" name="amount_total" id="total" placeholder="100000" readonly>
+                <input class="form-control" value="0.00" type="text" name="amount_total" id="total" readonly>
             </div>
-            <button class="btn btn-danger"><a href="purchase_create.php" class="text-light">Cancel</a></button>
+            <button class="btn btn-danger"><a href="#" class="text-light">Cancel</a></button>
             <button type="submit" class="btn btn-primary" name="submit">Create</button>
         </form>
-
     </div>
 
+
     <script>
-        function multiply() {
-            var quantity = document.getElementById("qtyId").value;
-            var price = document.getElementById("priId").value;
-            var total = parseFloat(quantity) * parseFloat(price);
-            document.getElementById("total").value = total;
-        }
+    function multiply() {
+        var quantity = document.getElementById("qtyId").value;
+        var price = document.getElementById("priId").value;
+        var total = parseFloat(quantity) * parseFloat(price);
+        document.getElementById("total").value = total;
+
+    }
     </script>
+
 
 </body>
 

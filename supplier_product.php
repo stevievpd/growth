@@ -38,7 +38,7 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
-    <title> supplier </title>
+    <title> supplier product</title>
 
 </head>
 
@@ -48,7 +48,7 @@ if(isset($_POST['submit'])){
             <form method="post">      
 </div>
                 <div class="form-group">
-                    <label>Supplier Name</label>
+                    <label>Supplier Product Code:</label>
                     <input type="text" class="form-control" placeholder="Enter Supplier Name" name="supplier_name"
                         autocomplete="off" required>
                 </div>
@@ -65,7 +65,7 @@ if(isset($_POST['submit'])){
                     <input type="text" class="form-control" placeholder="Enter city" name="city" autocomplete="off"
                         required>
                 </div>
-                
+
                 <div class="seach_item">
                     <button class="btn btn-danger"><a href="supplier_product.php" class="text-light">Cancel</a></button>
                     <button type="submit" class="btn btn-primary" name="submit">Save</button>

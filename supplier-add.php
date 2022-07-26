@@ -8,15 +8,16 @@ if(isset($_POST['submit'])){
     $city=$_POST['city'];
     $country=$_POST['country'];
     $email=$_POST['email'];
-    $phone=$_POST['phone'];
+    $phone_number=$_POST['phone_number'];
+    $bank=$_POST['bank'];
     $bank_account=$_POST['bank_account'];
     $branch=$_POST['branch'];
     $tin=$_POST['tin'];
-    $tax=$_POST['tax'];
-    $stamp=$_POST['stamp'];
+    
+    
 
     
-    $sql="INSERT INTO supplier (supplier_name, address, city, country, email, phone, bank_account, branch, tin, tax, stamp) values  ('$supplier_name','$address','$city', '$country','$email','$phone', '$bank_account','$branch','$tin','$tax','$stamp')";
+    $sql="INSERT INTO supplier (supplier_name, address, city, country, email, phone_number, bank, bank_account, branch, tin) values  ('$supplier_name','$address','$city', '$country','$email','$phone_number','$bank', '$bank_account','$branch','$tin')";
     $result=mysqli_query($conn,$sql);
     if($result){
 
@@ -46,61 +47,74 @@ if(isset($_POST['submit'])){
         <div class="container my-10">
             <form method="post">      
 </div>
-                <div class="form-group">
+                <div class="form-group  w-50">
                     <label>Supplier Name</label>
                     <input type="text" class="form-control" placeholder="Enter Supplier Name" name="supplier_name"
                         autocomplete="off" required>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group w-50">
                     <label>Address</label>
                     <input type="text" class="form-control" placeholder="Enter address" name="address" autocomplete="off"
                         required>
                 </div>
 
 
-                <div class="form-group">
+                <div class="form-group w-50">
                     <label>City</label>
                     <input type="text" class="form-control" placeholder="Enter city" name="city" autocomplete="off"
                         required>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group w-50">
                     <label>Country</label>
                     <input type="text" class="form-control" placeholder="Enter county" name="country" autocomplete="off"
                         required>
                 </div>
-                <div class="form-group">
+                <div class="form-group w-50">
                     <label>Email</label>
                     <input type="email" class="form-control" placeholder="Enter email" name="email" autocomplete="off"
                         required>
                 </div>
-
-                <div class="form-group">
-                    <label>Bank Account</label>
-                    <input type="text" class="form-control" placeholder="Enter bank account" name="bank_account"
+                <div class="form-group w-50"><br>
+                    <label>Phone Number</label>
+                    <input type="number" class="form-control" placeholder="Enter phone number" name="phone_number"
                         autocomplete="off" required>
                 </div>
 
-                <div class="form-group">
+
+                <div class="form-group w-50"><br>
+                    <label>Bank</label>
+                        <select class="w-40" data-live-search="true" name = "bank">
+                        <option>--Select Bank--</option>
+                        <option>BDO Unibank Inc.</option>
+                        <option>Metropolitan Bank and Trust Company</option>
+                        <option>Bank of the Philippine Islands</option>
+                        <option>Land Bank of the Philippines</option>
+                        <option>Philippine National Bank</option>
+                        <option>Security Bank</option>
+                        <option>China Banking Corporation</option>
+                        <option>Development Bank of the Philippines</option>
+                        <option>Union Bank of the Philippines</option>
+                        <option>Rizal Commercial Banking and Corporation</option>
+                        </select>
+                </div>
+
+                <div class="form-group w-50"><br>
+                    <label>Bank Account Number</label>
+                    <input type="tel" class="form-control" placeholder="Enter bank account" name="bank_account"
+                        autocomplete="off" required>
+                </div>
+
+                <div class="form-group w-50">
                     <label>Branch</label>
                     <input type="text" class="form-control" placeholder="Enter branch" name="branch"
                         autocomplete="off" required>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group w-50">
                     <label>Tin</label>
-                    <input type="tel",  min=0, max=10, step=1 class="form-control" placeholder="Enter tin" name="tin" autocomplete="off"
-                        required>
-                </div>
-                <div class="form-group">
-                    <label>Holding Tax</label>
-                    <input type="number" class="form-control" placeholder="Enter tax" name="tax" autocomplete="off"
-                        required>
-                </div>
-                <div class="form-group">
-                    <label>stamp</label>
-                    <input type="date" class="form-control" placeholder="Enter date" name="date" autocomplete="off"
+                    <input type="tel",  min=0, max=10, step=1 class="form-control" placeholder="000-000-000" name="tin" autocomplete="off"
                         required>
                 </div>
 

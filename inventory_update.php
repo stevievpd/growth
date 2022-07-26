@@ -47,25 +47,40 @@
                 <input type="number" class="form-control" placeholder="Enter product code " name="prodCode" autocomplete="off" value = <?php echo $prodCode;?>>
             </div>
             <div class="form-group">
-                <label>Description: </label>
-                <input type="text" class="form-control" placeholder="Enter description " name="prodDesc" autocomplete="off" value = <?php echo $prodDesc;?>>
+                <label>Product Name: </label>
+                <input type="text" class="form-control" placeholder="Enter product name " name="prodName" autocomplete="off" value = <?php echo $prodName;?>>
             </div>
             <div class="form-group">
-                <label>Unit:</label>
-                <input type="text" class="form-control" placeholder="Enter unit " name="unit" autocomplete="off" value = <?php echo $unit;?>>
+                <label>Product Description: </label>
+                <input type="text" class="form-control" placeholder="Enter porduct description " name="prodDesc" autocomplete="off" value ="0.00" <?php echo $prodDesc;?>>
             </div>
             <div class="form-group">
-                <label>Quantity: </label>
-                <input type="number" class="form-control" placeholder="Enter quantity " name="quantity" autocomplete="off" value = <?php echo $quantity;?>>
+                <label>Quantity:</label>
+                <input type="text" class="form-control" placeholder="Enter unit "  id="quantityid" name="quantity" autocomplete="off" value ="0.00" oninput="multiply()" <?php echo $quantity;?>>
             </div>
+            <div class="form-group">
+                <label>Price: </label>
+                <input type="number" class="form-control" value="0.00" id="priceid" name="price" autocomplete="off" value ="0.00"  oninput="multiply()"<?php echo $price;?>>
+            </div>
+            <div class="form-group">
+                <label>Cost: </label>
+                <input type="number" class="form-control" value="0.00" id="cost" name="cost" autocomplete="off" value = <?php echo $cost;?>>
+            </div>
+
             <button type="submit" class="btn btn-primary" name = "submit" >Submit</button>
             <button class ="btn btn-danger"><a href="inventory.php"class = "text-light">Cancel</a></button>
             
-        </form>
-         
+        </form> 
     </div>
 
-
+    <script>
+        function multiply() {
+            var quantity = document.getElementById("quantityid").value;
+            var price = document.getElementById("priceid").value;
+            var total = parseFloat(quantity) * parseFloat(price);
+            document.getElementById("cost").value = total;
+        }
+    </script>
 </body>
 
 </html>

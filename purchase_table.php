@@ -11,24 +11,22 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 $conn =mysqli_connect("localhost", "root","","growth");
 if(isset($_POST['purchase_order'])){
     $supplier_name = $_POST['supplier_name'];
-    $purchase_date =$_POST['purchase_order'];
+    $purchase_date = $_POST['purchase_date'];
     $expected_date = $_POST['expected_date'];
-    $notes =$_POST['notes'];
     $item = $_POST['item'];
     $quantity =$_POST['qauntity'];
     $price = $_POST['price'];
     $amount_total =$_POST['amount_total'];
 
-
-    $sql="INSERT INTO purchase_order (supplier_name, purchase_order, exepted_date, notes, item, quantity, price, amount_total) values ('$supplier_name', '$purchase_order','$expected_date', '$notes','$item', '$quantity','$price', '$amount_total')";
+    $sql="SELECT * from purchase_order where purchase_id";
     $result=mysqli_query($conn,$sql);
     if($result){
         $_SESSION['status']="Inserted Successfully";
-        header("Location: purchase_create.php");
+        header("Location: purchase_table.php");
 
     }else{
         $_SESSION['status']="not inserted";
-        header("Location purchase_create.php");
+        header("Location purchase_table.php");
     }
     }
 
@@ -67,10 +65,10 @@ if(isset($_POST['purchase_order'])){
         <table class="table table-hover">
             <thead>
                 <tr>
+                    <th scope="col">Purchase ID</th>
                     <th scope="col">Supplier Name</th>
                     <th scope="col">Purchase Date</th>
                     <th scope="col">Expected Date</th>
-                    <th scope="col">Notes</th>
                     <th scope="col">Item</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Price</th>
@@ -78,19 +76,52 @@ if(isset($_POST['purchase_order'])){
 
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="output">
             </tbody>
 
         </table>
     </div>
     </div>
     <?php include('footer.php')?>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajax({
+                type: 'POST',
+                url: 'queries/purchaseorder-search.php',
+                data: {
+                    name: $("#search").val(),
+                },
+                success: function(data) {
+                    $("#output").html(data);
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#search').keyup(function() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'queries/purchaseorder-search.php',
+                    data: {
+                        name: $("#search").val(),
+                    },
+                    success: function(data) {
+                        $("#output").html(data);
+                    }
+                });
+            });
+        });
+    </script>
+
     <?php
-if(iseet($_SESSION['status'])){
-    echo "<4>".$_SESSION['status']."</h4>";
-    unset($_SESSION['status']);
-}
-?>
+        if(isset($_SESSION['status'])){
+        echo "<4>".$_SESSION['status']."</h4>";
+        unset($_SESSION['status']);
+        }
+    ?>
 
 
 </body>

@@ -2,7 +2,7 @@
 require('db/db.php');
 include('header.php');
 if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
-	header('location:news.php');
+	header('location:inventory.php');
 	die();
 }
 ?>
@@ -41,7 +41,10 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                     <th scope="col">Supplier Name</th>
                     <th scope="col">Address</th>
                     <th scope="col">Phone</th>
-                    <th scope="col">Email</th>
+                    <th scope="col">Bank</th>
+                    <th scope="col">Bank Account</th>
+                    <th scope="col">Branch</th>
+                    <th scope="col">Tin</th>
                     <th scope="col">Stamp</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -55,11 +58,14 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
         if($result){
         while($row=mysqli_fetch_assoc($result))
         {
-            $supplier_id=$row['supplier_id'];
+            $id=$row['id'];
             $supplier_name=$row['supplier_name'];
             $address=$row['address'];
-            $phone=$row['phone'];
-            $email=$row['email'];
+            $phone_number=$row['phone_number'];
+            $bank=$row['bank'];
+            $bank_account=$row['bank_account'];
+            $branch=$row['branch'];
+            $tin=$row['tin'];
             $stamp=$row['stamp'];
 
 
@@ -67,13 +73,16 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
             echo ' <tr>
             <th scope="row">'.$supplier_name.'</th>
             <td>'.$address.'</td>
-            <td>'.$phone.'</td> 
-            <td>'.$email.'</td>
-            <td>'.$stamp.'</td> 
+            <td>'.$phone_number.'</td> 
+            <td>'.$bank.'</td>
+            <td>'.$bank_account.'</td> 
+            <td>'.$branch.'</td>
+            <td>'.$tin.'</td> 
+            <td>'.$stamp.'</td>
             <td>
-            <button class ="btn btn-primary my-1"><a href="supplier_update.php?updateid= '.$supplier_id.'" class = "text-light">Update</a></button>
-            <button class ="btn btn-danger my-1"><a href="supplier_delete.php?deleteid= '.$supplier_id.'" class = "text-light">Delete</a></button>
-            <button class ="btn btn-warning my-1"><a href="supplier_table.php?viewid= '.$supplier_id.'" class = "text-light">View</a></button>        
+            <button class ="btn btn-primary my-1"><a href="supplier_update.php?updateid= '.$id.'" class = "text-light">Update</a></button>
+            <button class ="btn btn-danger my-1"><a href="supplier_delete.php?deleteid= '.$id.'" class = "text-light">Delete</a></button>
+            <button class ="btn btn-warning my-1"><a href="inventory-add.php?viewid= '.$id.'" class = "text-light">Add Item</a></button>        
             </td>
             <tr>';
             }

@@ -79,8 +79,6 @@ if(!isset($_SESSION['IS_LOGIN'])){
                     <i class="fa fa-fw fa-newspaper"></i>
                     <span>Add User</span></a>
             </li>
-<<<<<<< HEAD
-=======
 
             <li class="nav-item">
                 <a class="nav-link" href="purchase_order.php">
@@ -88,22 +86,17 @@ if(!isset($_SESSION['IS_LOGIN'])){
                     <span>Puchase Order</span></a>
             </li>
 
->>>>>>> 828693fc22d5863c08a422d3f710b73b1b0d192b
             <li class="nav-item">
                 <a class="nav-link" href="attendance.php">
                     <i class="fa fa-fw fa-newspaper"></i>
                     <span>Attendance</span></a>
             </li>
-<<<<<<< HEAD
-=======
-
->>>>>>> 828693fc22d5863c08a422d3f710b73b1b0d192b
             <?php } ?>
 
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="supplier_table.php">
                     <i class="fa fa-fw fa-newspaper"></i>
-                    <span>Point of Sale</span></a>
+                    <span>Supplier</span></a>
             </li>
         </ul>
         <div id="content-wrapper">

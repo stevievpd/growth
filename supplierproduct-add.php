@@ -4,6 +4,7 @@ include 'db/db.php';
 include 'header.php';
 if(isset($_POST['submit'])){
 
+    $id=$_POST['id'];
     $prodCode=$_POST['prodCode'];
     $prodDesc=$_POST['prodName'];
     $prodDesc=$_POST['prodDesc'];
@@ -12,11 +13,11 @@ if(isset($_POST['submit'])){
     $cost=$_POST['cost'];
     
 
-    $sql="INSERT INTO inventory (prodCode, prodName, prodDesc, quantity, price, cost) values  ('$prodCode','$prodName','$prodDesc','$quantity','$price','$cost')";
+    $sql="INSERT INTO inventory ('id',prodCode, prodName, prodDesc, quantity, price, cost) values  ('$id','$prodCode','$prodName','$prodDesc','$quantity','$price','$cost')";
     $result=mysqli_query($conn,$sql);
     if($result){
 
-        header("Location: inventory-table.php");
+        header("Location: purchase_order.php");
     }
     else{
     }
@@ -72,7 +73,7 @@ if(isset($_POST['submit'])){
             </div>
 
             <button type="submit" class="btn btn-primary" name = "submit" >Submit</button>
-            <button class ="btn btn-danger"><a href="inventory-table.php"class = "text-light">Cancel</a></button>
+            <button class ="btn btn-danger"><a href="display.php"class = "text-light">Cancel</a></button>
             
         </form>
          

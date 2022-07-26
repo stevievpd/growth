@@ -10,9 +10,6 @@
 		$gender = $_POST['gender'];
 		$position = $_POST['position'];
 		$schedule = $_POST['schedule'];
-		if(!empty($filename)){
-			move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$filename);	
-		}
 		//creating employeeid
 		$letters = '';
 		$numbers = '';

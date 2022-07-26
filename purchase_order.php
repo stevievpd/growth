@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
     $sql="INSERT INTO purchase_order (id, purchase_date, expected_date, item, quantity, price, amount_total) values  ('$id','$purchase_date','$expected_date', '$item', '$quantity','$price','$amount_total')";
     $result=mysqli_query($conn,$sql);
     if($result){
-        header("Location: purchase_table.php");
+        header("Location:");
     }
     die(mysqli_error($conn));
 }                                      

@@ -6,14 +6,13 @@ include '../db/db.php';
 	$result = mysqli_query($conn, $sql);
 	if(mysqli_num_rows($result)>0){
 		while ($row=mysqli_fetch_assoc($result)) {
-			echo "	<tr class='table-row'>
+			echo "	<tr class='table-row' data-id='".$row['empid']."'>
 					<td>". $row['employee_id']."</td>
 					<td>". $row['firstname']." ". $row['lastname']."</td>
 					<td>". $row['description']."</td>
 					<td>". date('h:i A', strtotime($row['time_in']))." ". date('h:i A', strtotime($row['time_out']))."</td>
 					<td>". date('M d, Y', strtotime($row['created_on']))."</td>
 					<td>
-					<button class='btn btn-success btn-sm btn-flat edit' data-id='".$row['empid']."'><i class='fa fa-edit'></i> Edit</button>
 					<button class='btn btn-danger btn-sm btn-flat delete' data-id='".$row['empid']."'><i class='fa fa-trash'></i> Delete</button>
 					</td>
 					</tr>";
@@ -21,7 +20,7 @@ include '../db/db.php';
 		}
 
 	}
-	else{
+	else{ 
 		echo "<tr><td>0 result's found</td></tr>";
 	}
 	include 'employee_modal.php';
@@ -31,7 +30,7 @@ include '../db/db.php';
 
 <script>
 	$(function(){
-  $('.edit').click(function(e){
+  $('.table-row').click(function(e){
     e.preventDefault();
     $('#edit').modal('show');
     var id = $(this).data('id');

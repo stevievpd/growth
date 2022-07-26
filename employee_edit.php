@@ -1,8 +1,8 @@
 <?php
 	include 'includes/session.php';
 
-	$result=mysqli_query($con,$sql);
-$row=mysqli_fetch_assoc($result);
+	$result=mysqli_query($conn,$sql);
+	$row=mysqli_fetch_assoc($result);
 
 	if(isset($_POST['edit'])){
 		$empid = $_POST['id'];

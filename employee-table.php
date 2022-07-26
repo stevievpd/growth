@@ -58,6 +58,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                     <th>Position</th>
                     <th>Schedule</th>
                     <th>Member Since</th>
+                    <th>Tools</th>
                 </tr>
             </thead>
             <tbody id="output">

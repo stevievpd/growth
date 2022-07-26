@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <title>Add inventory</title>
 
-</head>
+</head> 
 
 <body>
     <div class="wrapper">

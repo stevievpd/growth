@@ -36,9 +36,8 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                             aria-label="Search">
                     </form>
                     <button class="btn float-right">
-                        <a href="employee-add.php">
-                            <i class="fa-solid fa-user-plus"></i>
-                        </a>
+                        <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i
+                                class="fa fa-plus"></i> New</a>
                     </button>
                     <button class="btn float-right">
                         <a href="employee-reports.php">
@@ -58,6 +57,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
                     <th>Position</th>
                     <th>Schedule</th>
                     <th>Member Since</th>
+                    <th>Tools</th>
                 </tr>
             </thead>
             <tbody id="output">

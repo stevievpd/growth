@@ -15,8 +15,10 @@ if(isset($_POST['submit'])){
     $sql="INSERT INTO employee (first_name, last_name, email, phone_number, hire_date, salary) values  ('$first_name','$last_name','$email','$phone_number', '$hire_date', '$salary')";
     $result=mysqli_query($conn,$sql);
     if($result){
-
+        
+    
         header("Location: employee-table.php");
+
     }
     else{
     }

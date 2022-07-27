@@ -3,7 +3,7 @@
 
 include '../db/db.php';
 
-$sql = "SELECT *, employees.id AS empid FROM employees LEFT JOIN position ON position.id=employees.position_id LEFT JOIN schedules ON schedules.id=employees.schedule_id WHERE employee_id LIKE '%".$_POST['name']."%' OR firstname LIKE '%".$_POST['name']."%' ";
+$sql = "SELECT *, supplier.id AS supid FROM supplier LEFT JOIN supplier_product ON supplier_product.id=supplier.id LEFT JOIN purchase_order ON purchase_order.id=supplier.id";
 $result = mysqli_query($conn, $sql);
 if(mysqli_num_rows($result)>0){
 	while ($row=mysqli_fetch_assoc($result)) {

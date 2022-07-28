@@ -24,17 +24,17 @@ while($row=$result->fetch_object()){
     $amount_total=$row->amount_total;
     
     $pdf->Line(10,60,200,60);
-    $pdf->Ln(3);
-    $pdf->Cell(35,20,'Company Name:',0);
+    $pdf->Ln(10);
+    $pdf->Cell(32,20,'Company Name:',0);
     $pdf->Cell(10,20,' Crave',0);
 
     $pdf->Ln(3);
-    $pdf->Cell(30,25,'Address :',0);
-    $pdf->Cell(30,25,'5th Aggkgkgkgkggkve.',0);
+    $pdf->Cell(20,25,'Address :',0);
+    $pdf->Cell(10,25,'5th Aggkgkgkgkggkve.',0);
 
     $pdf->Ln(3);
-    $pdf->Cell(40,30,'City/Province:',0,0,'C');
-    $pdf->Cell(95,25,'Quezon',0,0,'C');
+    $pdf->Cell(28,30,'City/Province:',0);
+    $pdf->Cell(10,30,'Quezon',0);
 
 
     

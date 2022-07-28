@@ -9,7 +9,8 @@ $result = $conn->query($select);
 $pdf = new FPDF();
 $pdf-> AddPage();
 $pdf->SetFont('Arial','',12);
-$pdf->Cell (180 ,5, 'PURCHASE ORDER', 0, 0,'C');
+$pdf->SetFillColor(77, 153, 0);
+$pdf->Cell (190 ,5, 'PURCHASE ORDER','B', 0,'C',true);
 $pdf->Ln(5);
 
 
@@ -23,8 +24,12 @@ while($row=$result->fetch_object()){
     $price=$row->price;
     $amount_total=$row->amount_total;
     
-    $pdf->Line(10,60,200,60);
-    $pdf->Ln(10);
+    $pdf->Ln(2);
+    $pdf->Cell(190,10,'LOGO HERE',0,0,'C');
+
+//rightside
+        
+    $pdf->Ln(25);
     $pdf->Cell(32,20,'Company Name:',0);
     $pdf->Cell(10,20,' Crave',0);
 
@@ -35,78 +40,115 @@ while($row=$result->fetch_object()){
     $pdf->Ln(3);
     $pdf->Cell(28,30,'City/Province:',0);
     $pdf->Cell(10,30,'Quezon',0);
+//leftside
+    $pdf->Ln(10);
+    $pdf->Cell(130,-15,'PO Number:',0,0,'R');
+    $pdf->Cell(10,-15,'44066005',0);
+
+    $pdf->Ln(3);
+    $pdf->Cell(130,-10,'PO Date:',0,0,'R');
+    $pdf->Cell(10,-10,'mm/dd/yyyy',0);
+
+    $pdf->Ln(3);
+    $pdf->Cell(130,-5,'Vendor ID:',0,0,'R');
+    $pdf->Cell(10,-5,'11111111',0);
+
+    $pdf->Line(10,70,200,70);
+
+//from-to
+    $pdf->Ln(10);
+    $pdf->SetFillColor(102, 204, 0);
+    $pdf->Cell(190,10,'Purchase From:','B',0,0,'L');
+    $pdf->Cell(-20,10,'Purchase To:',0,0,'R');
+    $pdf->Ln(5);
+//vendor
+    $pdf->Ln(5);
+    $pdf->Cell(28,10,'Vendor Name:',0,0,'L');
+    $pdf->Cell(65,10,$id,0);
+
+    $pdf->Ln(3);
+    $pdf->Cell(18,15,'Address:',0,0,'L');
+    $pdf->Cell(10,15,'Quezon',0);
+
+    $pdf->Ln(5);
+    $pdf->Cell(28,17,'City/Province:',0,0,'L');
+    $pdf->Cell(10,17,'Quezon',0);
+
+    $pdf->Ln(15);
+    $pdf->Cell(30,13,'Contact Name:',0,0,'L');
+    $pdf->Cell(10,13,'09459245212',0);
+    $pdf->Ln(1);
+
+    //company
+    $pdf->Ln(5);
+ 
+    $pdf->Cell(140,-47,'Company Name:',0,0,'R');
+    $pdf->Cell(65,-47,'Bulla Crave',0);
+
+    $pdf->Ln(3);
+    $pdf->Cell(140,-42,'Address:',0,0,'R');
+    $pdf->Cell(10,-42,'Quezon',0);
+
+    $pdf->Ln(5);
+    $pdf->Cell(140,-40,'City/Province:',0,0,'R');
+    $pdf->Cell(10,-40,'Quezon',0);
+
+    $pdf->Ln(13);
+    $pdf->Cell(140,-40,'Contact Name:',0,0,'R');
+    $pdf->Cell(10,-40,'09459245212',0);
+    $pdf->Ln(1);
+
+//shipping methods
+$pdf->Line(10,106,200,106);
+$pdf->Ln(10);
+$pdf->Cell(5,-40,'Shipping Method:',0,0,'L');  
+$pdf->Cell(10,-28,'Online Shipping',0);
+$pdf->Ln(3);
+$pdf->Cell(180,-46,'Payment Terms:',0,0,'C'); 
+$pdf->Cell(-180,-35,'Credit Card',0,0,'C');
+$pdf->Ln(3);
+
+$pdf->Cell(180,-52,'Required By Date:',0,0,'R');
+$pdf->Cell(-10,-40,'10-12-2022',0,0,'R');
+$pdf->Ln(5);
 
 
+//item purchase
+$pdf->Line(10,122,200,122);
+    $pdf->Ln(1);
+    $pdf->Cell(5,-30,'Item Desciption:',0,0,'L');
+    $pdf->Cell(-100,-18,'Laptop',0,0,'L');
+
+    $pdf->Ln(1);
+    $pdf->Cell(145,-32,'Quantity:',0,0,'C');
+    $pdf->Cell(-150 ,-20,'555',0,0,'C');
+
+    $pdf->Ln(1);
+    $pdf->Cell(225,-33,'Unit Price:',0,0,'C');
+    $pdf->Cell(-230,-22,'45',0,0,'C');
+
+    $pdf->Ln(1);
+    $pdf->Cell(160,-36,'Amount:',0,0,'R');
+    $pdf->Cell(-5,-23,'582',0,0,'R');
+
+    $pdf->Line(10,135,200,135);
+
+    //LINE TABLE*
     
-    $pdf->Ln(20);
-    $pdf->Cell(33,10,'Purchase ID:',0,0,'C');
-    $pdf->Ln(3);
-    $pdf->Cell(65,0,$id,0,0,'C');
-
-    $pdf->Ln(3);
-    $pdf->Cell(45,20,'PO date:',0,0,'C');
-    $pdf->Ln(3);
-    $pdf->Cell(88,10,$purchase_date,0,0,'C');
-
-    $pdf->Ln(5);
-    $pdf->Cell(35,13,'Expeted date:',0,0,'C');
-    $pdf->Ln(5);
-    $pdf->Cell(88,4,$expected_date,0,0,'C');
-    $pdf->Ln(1);
-
-    $pdf->Ln(25);
-    $pdf->Cell(210,-60,'Supplier Name:',0,0,'C');
-    $pdf->Ln(5);
-    $pdf->Cell(255,-70,'',0,0,'C');
-    $pdf->Ln(5);
-    $pdf->Cell(220,-65,'Address:',0,0,'C');
-    $pdf->Ln(5);
-    $pdf->Cell(265,-75,'Makati City',0,0,'C');
-    $pdf->Ln(5);
-    $pdf->Cell(208,-70,'Phone Number:',0,0,'C');
-    $pdf->Ln(5);
-    $pdf->Cell(265,-80,'09452489128',0,0,'C');
-
-    $pdf->Ln(1);
-    $pdf->Cell(20,-72,'ITEMS',0,0,'C');
-    $pdf->Ln(5);
-
-    $pdf->Line(10,100,200,100);
-    $pdf->Line(10,110,200,110);
+    
 
 
-    $pdf->Ln(1);
-    $pdf->Cell(50,-63,'Purchase Desciption:',0,0,'C');
-    $pdf->Ln(5);
-    $pdf->Cell(40,-58,$item,0,0,'C');
 
-    $pdf->Ln(1);
-    $pdf->Cell(145,-76,'Quantity:',0,0,'C');
-    $pdf->Ln(5);
-    $pdf->Cell(130,-70,$quantity,0,0,'C');
+    //FOOTER
 
-    $pdf->Ln(1);
-    $pdf->Cell(225,-89,'Price:',0,0,'C');
-    $pdf->Ln(5);
-    $pdf->Cell(215,-80,$price,0,0,'C');
+     $pdf->Ln(5);
+    $pdf->Cell(28,50,'Recieved by:',0,0,'L');
+    $pdf->Cell(10,50,'Roge',0,0,'C');
+    $pdf->Line(10,195,70,195);
 
-    $pdf->Ln(1);
-    $pdf->Cell(310,-102,'Total Amount:',0,0,'C');
-    $pdf->Ln(5);
-    $pdf->Cell(300,-93,$amount_total,0,0,'C');
-    $pdf->Ln();
-
-    $pdf->Line(10,100,10,150,'C');
-    $pdf->Line(70,100,70,150,'C');
-    $pdf->Line(150,100,150,150,'C');
-    $pdf->Line(110,100,110,150,'C');
-    $pdf->Line(200,100,200,150,'C');
-    $pdf->Line(10,150,200,150);
-   
-    $pdf->Cell(50,185,'Recieved by:',0,0,'C');
-    $pdf->Ln(5);
-    $pdf->Cell(215,-80,$price,0,0,'C');
-    $pdf->Line(20,165,80,165);
+    $pdf->Cell(100,50,'Total Amount:',0,0,'R');
+    $pdf->Cell(18,50,'5212222',0,0,'C');
+    $pdf->Line(120,195,190,195);
 
 }
 $pdf ->Output();

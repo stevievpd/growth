@@ -28,8 +28,7 @@ if(isset($_POST['submit'])){
     $manager_id=$_POST['manager_id'];
     $department_id=$_POST['department_id'];
 
-    $sql="UPDATE employee SET employee_id=$employee_id, first_name='$first_name', last_name='$last_name', email='$email', phone_number='$phone_number', hire_date='$hire_date', job_id='$job_id', salary='$salary', manager_id='$manager_id', department_id='$department_id' WHERE employee_id=$employee_id";
-    $result=mysqli_query($conn,$sql);
+    c
     if($result){
         header("location: employee-table.php");
     }

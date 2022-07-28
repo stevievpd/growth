@@ -3,7 +3,7 @@ require('db/db.php');
 include('header.php');
 if(isset($_POST['submit'])){
 
-    $id=$_POST['id'];
+    // $id = $_POST['id'];
     $purchase_date=$_POST['purchase_date'];
     $expected_date=$_POST['expected_date'];
     $item=$_POST['item'];
@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
     $price=$_POST['price'];
     $amount_total=$_POST['amount_total'];
 
-    $sql="INSERT INTO purchase_order (id, purchase_date, expected_date, item, quantity, price, amount_total) values  ('$id','$purchase_date','$expected_date', '$item', '$quantity','$price','$amount_total')";
+    $sql="INSERT INTO purchase_order (purchase_date, expected_date, item, quantity, price, amount_total) values  ('$purchase_date','$expected_date', '$item', '$quantity','$price','$amount_total')";
     $result=mysqli_query($conn,$sql);
     if($result){
         header("Location:");
@@ -35,6 +35,7 @@ if(isset($_POST['submit'])){
 
 </head>
 <h2>Purchase Order</h2>
+
 <body onload="multiply();">
     <div class="purchase_wrapper">
         <form method="post">
@@ -102,13 +103,13 @@ if(isset($_POST['submit'])){
 
             <div class="form-group  w-25">
                 <label>Quantity:</label>
-                <input class="form-control" value="0.00" type="number" name="quantity" id="qtyId" autocomplete="off"
-                    oninput="multiply()">
+                <input class="form-control" placeholder="0.00" type="number" name="quantity" id="qtyId"
+                    autocomplete="off" oninput="multiply()">
             </div>
 
             <div class="form-group  w-25"><br>
                 <label>Price:</label>
-                <input class="form-control" value="0.00" type="number" name="price" id="priId" autocomplete="off"
+                <input class="form-control" placeholder="0.00" type="number" name="price" id="priId" autocomplete="off"
                     oninput="multiply()">
             </div>
             <div class="form-group  w-25"><br>
@@ -116,7 +117,8 @@ if(isset($_POST['submit'])){
                 <input class="form-control" value="0.00" type="text" name="amount_total" id="total" readonly>
             </div>
             <button class="btn btn-danger"><a href="#" class="text-light">Cancel</a></button>
-            <button type="submit" class="btn btn-primary" name="submit">Create</button>
+            <button type="submit" class="btn btn-primary" name="submit">Save</button>
+            <button id="createPDF" class="btn btn-primary" name="submit">Create pdf</button>
         </form>
     </div>
 
@@ -127,7 +129,6 @@ if(isset($_POST['submit'])){
         var price = document.getElementById("priId").value;
         var total = parseFloat(quantity) * parseFloat(price);
         document.getElementById("total").value = total;
-
     }
     </script>
 

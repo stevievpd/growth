@@ -119,11 +119,7 @@ if(isset($_POST['submit'])){
             <button class="btn btn-danger"><a href="#" class="text-light">Cancel</a></button>
             <button type="submit" class="btn btn-primary" name="submit">Save</button>
             <button id="createPDF" class="btn btn-primary" name="submit">Create pdf</button>
-        </form>
-    </div>
-
-
-    <script>
+            <script>
     function multiply() {
         var quantity = document.getElementById("qtyId").value;
         var price = document.getElementById("priId").value;
@@ -131,6 +127,13 @@ if(isset($_POST['submit'])){
         document.getElementById("total").value = total;
     }
     </script>
+
+
+        </form>
+    </div>
+
+
+    
 
 
 </body>
@@ -159,3 +162,16 @@ if(isset($_POST['submit'])){
     padding: 100px;
 }
 </style>
+
+
+$pdf->Cell(27,5,'Phone Number',0,0,'L');
+$pdf->Cell(40,5,'08888',0,0);
+$pdf->Cell(67,5,'Phone Number',0,0,'R');
+$pdf->Cell(50,5,'08888',0,0);
+$pdf->ln(10);
+
+$pdf->Cell(28,5,'Contact Person',0,0,'L');
+$pdf->Cell(40,5,'08888',0,0);
+$pdf->Cell(66,5,'Contant Person',0,0,'R');
+$pdf->Cell(40,5,'08888',0,0);   
+$pdf->ln(15);

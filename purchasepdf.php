@@ -121,22 +121,20 @@ $pdf->Line(10,122,200,122);
 
     $pdf->Ln(1);
     $pdf->Cell(145,-32,'Quantity:',0,0,'C');
-    $pdf->Cell(-150 ,-20,'555',0,0,'C');
+    $pdf->Cell(-150 ,-20,$quantity,0);
 
     $pdf->Ln(1);
     $pdf->Cell(225,-33,'Unit Price:',0,0,'C');
-    $pdf->Cell(-230,-22,'45',0,0,'C');
+    $pdf->Cell(-230,-22, $price,0);
 
     $pdf->Ln(1);
     $pdf->Cell(160,-36,'Amount:',0,0,'R');
-    $pdf->Cell(-5,-23,'582',0,0,'R');
+    $pdf->Cell(-5,-23, $amount_total,0);
 
     $pdf->Line(10,135,200,135);
 
     //LINE TABLE*
     
-    
-
 
 
     //FOOTER
@@ -152,5 +150,4 @@ $pdf->Line(10,122,200,122);
 
 }
 $pdf ->Output();
-$pdf->Ln(50);
 ?>

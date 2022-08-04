@@ -78,19 +78,19 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
             <button class="btn btn-danger"><a href="display.php" class="text-light">Search Item</a></button>
             <div>
             <div class="form-group">
-            <span>Product Description</span>
+            <span>Product Description:</span>
             </div>
             <div class="form-group">
-            <span>Unit</span>
+            <span>Unit:</span>
             </div>
             <div class="form-group">
-            <span>Quantity</span></span>
+            <span>Quantity:</span></span>
             </div>
             <div class="form-group">
-            <span>Price</span>
+            <span>Price:</span>
             </div>
             <div class="form-group">
-            <span>Total Amount</span>
+            <span>Total Amount:</span>
             </div>
             <button class="btn btn-danger"><a href="display.php" class="text-light">Cancel</a></button>
             <button type="submit" class="btn btn-primary" name="submit">Create</button>
@@ -102,7 +102,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
 </html>
 <style type="text/css">
 .supplier{
-    width: 600px;
+    width: 300px;
     height:35px;
     border-radius:2px;
     radius: 2px;
@@ -110,6 +110,7 @@ if(isset($_SESSION['ROLE']) && $_SESSION['ROLE']!='1'){
     align: center;
 }
 #content-wrapper{
-    padding: 20px;
+    padding: 100px;
+
 }
     </style>
